@@ -1,0 +1,27 @@
+<% content_for :page_header do %>
+  View Recording
+<% end %>
+
+<% content_for :panel_heading do %>
+  <strong><%= @upload.title %></strong>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="embed-responsive embed-responsive-4by3">
+      <video src="<%= @upload.video.url %>" controls></video>
+    </div>
+  </div>
+
+  <div class="col-lg-6" style="word-wrap: break-word;">
+    <h5><strong>Description</strong></h5>
+    <p><%= @upload.description %></p>
+    <br />
+    <p><i class="fa fa-clock-o fa-fw"></i> Uploaded at <%= @upload.created_at.strftime("%H:%M, on %d/%m/%Y") %></p>
+    <p><i class="fa fa-pencil-square fa-fw"></i> Last edited at <%= @upload.updated_at.strftime("%H:%M, on %d/%m/%Y") %></p>
+  </div>
+</div>
+
+<br />
+
+<%= link_to '<i class="fa fa-caret-left"></i> Close'.html_safe, '_self', id: 'back' %>

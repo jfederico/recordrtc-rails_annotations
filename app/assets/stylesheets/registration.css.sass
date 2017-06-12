@@ -1,0 +1,40 @@
+// Color variables
+$table-condensed-bg-color: #fff
+$submit-div-top-border-color: #ddd
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// CSS for CONTROLLER: registration, global
+////////////////////////////////////////////////////////////////////////////////
+
+body
+  &.registration
+    ////////////////////////////////////////////////////////////////////////////
+    // CSS for CONTROLLER: message, ACTION: register
+    ////////////////////////////////////////////////////////////////////////////
+    &.register
+      table
+        &.table
+          &.table-condensed
+            background-color: $table-condensed-bg-color
+
+            label
+              display: block
+
+            td
+              .diff-line-height
+                line-height: 2.2
+
+      div
+        #submit-div
+          border-top: 1px solid $submit-div-top-border-color
+          margin-top: 15px
+          padding-top: 15px
+
+    ////////////////////////////////////////////////////////////////////////////
+    // CSS for CONTROLLER: message, ACTION: submit_proxy
+    ////////////////////////////////////////////////////////////////////////////
+    &.submit_proxy
+      span
+        font-weight: bold

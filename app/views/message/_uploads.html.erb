@@ -1,0 +1,46 @@
+<% unless @uploads.empty? %>
+  <table id="uploads-table" class="table table-striped table-bordered dataTable no-footer responsive nowrap" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Uploaded</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @uploads.each do |upload| %>
+        <tr>
+          <td><%= link_to upload.title, recordlti_path(upload), target: '_blank' %></td>
+          <td><%= upload.created_at.strftime("%A, %d %b %Y @ %H:%M") %></td>
+          <td class="text-right">
+            <%= form_tag edit_recordlti_path(upload), method: :get, target: '_blank', enforce_utf8: false, id: "edit-btn-#{upload.id}" do %>
+            <% end %>
+            <%= form_tag api_upload_path(upload), method: :delete, remote: true, enforce_utf8: false, id: "delete-btn-#{upload.id}" do %>
+            <% end %>
+
+            <div class="btn-group">
+              <button form="<%= "edit-btn-#{upload.id}" %>" type="submit" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</button>
+              <button form="<%= "delete-btn-#{upload.id}" %>" type="submit" class="btn btn-outline btn-danger btn-xs" data-confirm="Are you sure?"><i class="fa fa-trash-o"></i> Delete</button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<script type="text/javascript">
+  $(document).on('ready', function() {
+    var table = $('#uploads-table').dataTable({
+      'stateSave': true,
+      'columnDefs': [
+        {
+          'targets': 2,
+          'orderable': false,
+          'searchable': false
+        }
+      ]
+    });
+  });
+</script>

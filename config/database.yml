@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV['RECORDRTC_RAILS_ANNOTATIONS_HOST'] %>
+  username: <%= ENV['RECORDRTC_RAILS_ANNOTATIONS_USER'] %>
+  password: <%= ENV['RECORDRTC_RAILS_ANNOTATIONS_PASS'] %>
+
+development:
+  <<: *default
+  database: rra-os_development
+
+test:
+  <<: *default
+  database: rra-os_test
+
+production:
+  <<: *default
+  database: rra-os_production
+  timeout: 5000
+  connect_timeout: 10

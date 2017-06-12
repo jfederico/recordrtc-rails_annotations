@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= csrf_meta_tags %>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RecordLTI</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow.min.css">
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      hljs.initHighlightingOnLoad();
+    });
+  </script>
+</head>
+
+<body class="<%= controller.controller_name %> <%= controller.action_name %>">
+  <div id="wrapper" class="">
+    <%= render 'layouts/navbar' %>
+  </div>
+
+  <div id="page-wrapper">
+    <%= render 'layouts/title' %>
+    <%= render 'layouts/messages' %>
+
+    <div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= content_for?(:panel_heading) ? yield(:panel_heading) : "Dashboard" %>
+        </div>
+
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
