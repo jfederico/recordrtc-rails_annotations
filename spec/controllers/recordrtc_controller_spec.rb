@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe RecordltiController, type: :controller do
+RSpec.describe RecordRTCController, type: :controller do
 
 end

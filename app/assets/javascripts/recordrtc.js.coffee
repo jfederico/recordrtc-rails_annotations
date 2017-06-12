@@ -3,10 +3,10 @@
 # Only start executing once DOM has loaded
 $(document).ready ->
   #/////////////////////////////////////////////////////////////////////////////
-  # JavaScript for CONTROLLER: recordlti, global
+  # JavaScript for CONTROLLER: recordrtc, global
   #/////////////////////////////////////////////////////////////////////////////
 
-  if $('body').hasClass('recordlti')
+  if $('body').hasClass('recordrtc')
     #//////////////////
     # Helper functions
     #//////////////////
@@ -32,7 +32,7 @@ $(document).ready ->
 
 
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: recordlti, ACTION: new
+    # JavaScript for CONTROLLER: recordrtc, ACTION: new
     #///////////////////////////////////////////////////////////////////////////
 
     if $('body').hasClass('new')
@@ -305,7 +305,7 @@ $(document).ready ->
 
 
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: recordlti, ACTION: edit
+    # JavaScript for CONTROLLER: recordrtc, ACTION: edit
     #///////////////////////////////////////////////////////////////////////////
 
     if $('body').hasClass('edit')

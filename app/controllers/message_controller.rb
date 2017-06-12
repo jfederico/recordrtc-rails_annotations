@@ -24,8 +24,8 @@ class MessageController < ApplicationController
     process_message
   end
 
-  def recordlti_launch_request
-    process_message_recordlti
+  def recordrtc_launch_request
+    process_message_recordrtc
   end
 
   def content_item_selection
@@ -59,7 +59,7 @@ class MessageController < ApplicationController
     @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
   end
 
-  def process_message_recordlti
+  def process_message_recordrtc
     @uploads = Upload.order('id DESC')
 
     @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"

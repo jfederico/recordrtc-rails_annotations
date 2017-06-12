@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: rra-os_development
+  database: rra_development
 
 test:
   <<: *default
-  database: rra-os_test
+  database: rra_test
 
 production:
   <<: *default
-  database: rra-os_production
+  database: rra_production
   timeout: 5000
   connect_timeout: 10

@@ -1,15 +1,15 @@
-class RecordltiController < ApplicationController
-  # GET /recordlti/new
+class RecordRTCController < ApplicationController
+  # GET /recordrtc/new
   def new
     @upload = Upload.new
   end
 
-  # GET /recordlti/:id/edit
+  # GET /recordrtc/:id/edit
   def edit
     @upload = Upload.find(params[:id])
   end
 
-  # GET /recordlti/:id
+  # GET /recordrtc/:id
   def show
     @upload = Upload.find(params[:id])
   end

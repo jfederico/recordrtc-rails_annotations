@@ -18,12 +18,13 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Add progress bar after upload/edit
 * Use SweetAlert2 for deleting recordings
 * Find way to size DataTables columns more reasonably
+* Add Delete button to recordrtc show view
 * SEPARATE CONCERNS AGAIN
 * Rename and organize controllers and routes
 * Implement Inspinia theme
 * Find error in IMS-LTI 2.1.2 gem
 * Standardize by either using only pure JS or only jQuery
-* Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordlti controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
+* Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
 * Add Adapter.js to standardize experience across browsers
 * OPTIONAL: Add video thumbnails to home page
 * OPTIONAL: Integrate Shrine's URL storage for cache

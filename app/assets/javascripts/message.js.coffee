@@ -5,16 +5,16 @@ $(document).ready ->
 
   if $('body').hasClass('message')
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: message, ACTION: recordlti_launch_request
+    # JavaScript for CONTROLLER: message, ACTION: recordrtc_launch_request
     #///////////////////////////////////////////////////////////////////////////
 
-    if $('body').hasClass('recordlti_launch_request')
+    if $('body').hasClass('recordrtc_launch_request')
       #//////////////////
       # Helper functions
       #//////////////////
 
       refresh = ->
-        $.ajax url: '/recordlti/refresh_uploads'
+        $.ajax url: '/recordrtc/refresh_uploads'
         return
 
 

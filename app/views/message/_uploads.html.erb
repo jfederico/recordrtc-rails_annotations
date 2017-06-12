@@ -11,10 +11,10 @@
     <tbody>
       <% @uploads.each do |upload| %>
         <tr>
-          <td><%= link_to upload.title, recordlti_path(upload), target: '_blank' %></td>
+          <td><%= link_to upload.title, recordrtc_path(upload), target: '_blank' %></td>
           <td><%= upload.created_at.strftime("%A, %d %b %Y @ %H:%M") %></td>
           <td class="text-right">
-            <%= form_tag edit_recordlti_path(upload), method: :get, target: '_blank', enforce_utf8: false, id: "edit-btn-#{upload.id}" do %>
+            <%= form_tag edit_recordrtc_path(upload), method: :get, target: '_blank', enforce_utf8: false, id: "edit-btn-#{upload.id}" do %>
             <% end %>
             <%= form_tag api_upload_path(upload), method: :delete, remote: true, enforce_utf8: false, id: "delete-btn-#{upload.id}" do %>
             <% end %>
