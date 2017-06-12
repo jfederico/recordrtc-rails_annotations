@@ -14,14 +14,9 @@
           <td><%= link_to upload.title, recordrtc_path(upload), target: '_blank' %></td>
           <td><%= upload.created_at.strftime("%A, %d %b %Y @ %H:%M") %></td>
           <td class="text-right">
-            <%= form_tag edit_recordrtc_path(upload), method: :get, target: '_blank', enforce_utf8: false, id: "edit-btn-#{upload.id}" do %>
-            <% end %>
-            <%= form_tag api_upload_path(upload), method: :delete, remote: true, enforce_utf8: false, id: "delete-btn-#{upload.id}" do %>
-            <% end %>
-
             <div class="btn-group">
-              <button form="<%= "edit-btn-#{upload.id}" %>" type="submit" class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</button>
-              <button form="<%= "delete-btn-#{upload.id}" %>" type="submit" class="btn btn-outline btn-danger btn-xs" data-confirm="Are you sure?"><i class="fa fa-trash-o"></i> Delete</button>
+              <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_recordrtc_path(upload), class: 'btn btn-default btn-xs', method: :get, target: '_blank' %>
+              <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, api_upload_path(upload), class: 'btn btn-outline btn-danger btn-xs', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
             </div>
           </td>
         </tr>

@@ -11,6 +11,47 @@ $(document).ready ->
     # Helper functions
     #//////////////////
 
+    validate = ->
+      if titleInput.value is '' and descriptionInput.value is ''
+        titleInput.parentElement.classList.add 'has-error'
+        descriptionInput.parentElement.classList.add 'has-error'
+        swal(
+          title: 'Something\'s missing...'
+          text: 'The title and description can\'t be empty!'
+          type: 'warning'
+          confirmButtonColor: '#DD6B55'
+          confirmButtonText: 'OK'
+        )
+        false
+      else if titleInput.value is ''
+        descriptionInput.parentElement.classList.remove 'has-error'
+        titleInput.parentElement.classList.add 'has-error'
+        swal(
+          title: 'Something\'s missing...'
+          text: 'The title can\'t be empty!'
+          type: 'warning'
+          confirmButtonColor: '#DD6B55'
+          confirmButtonText: 'OK'
+        )
+        false
+      else if descriptionInput.value is ''
+        titleInput.parentElement.classList.remove 'has-error'
+        descriptionInput.parentElement.classList.add 'has-error'
+        swal(
+          title: 'Something\'s missing...'
+          text: 'The description can\'t be empty!'
+          type: 'warning'
+          confirmButtonColor: '#DD6B55'
+          confirmButtonText: 'OK'
+        )
+        false
+      else
+        titleInput.parentElement.classList.remove 'has-error'
+        descriptionInput.parentElement.classList.remove 'has-error'
+        titleInput.parentElement.classList.add 'has-success'
+        descriptionInput.parentElement.classList.add 'has-success'
+        true
+
     exit = ->
       window.close()
       return
@@ -72,7 +113,7 @@ $(document).ready ->
         return
 
       toggleRecording = ->
-        if `startStopBtn.innerHTML == '<i class="fa fa-circle"></i> Start Recording'` or `startStopBtn.innerHTML == '<i class="fa fa-circle"></i> Record Again'`
+        if startStopBtn.innerHTML is '<i class="fa fa-circle"></i> Start Recording' or startStopBtn.innerHTML is '<i class="fa fa-circle"></i> Record Again'
           startRecording()
 
           startStopBtn.classList.remove 'btn-outline'
@@ -141,10 +182,6 @@ $(document).ready ->
         return
 
       upload = ->
-        if `titleInput.value == ''` or `descriptionInput.value == ''`
-          alert 'Title and description can\'t be empty!'
-          return
-
         # Generate unique filename
         date = (new Date).valueOf().toString()
         id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
@@ -190,9 +227,8 @@ $(document).ready ->
 
         xhr.upload.onload = ->
           console.log 'Upload ended'
-          window.alert 'Recording saved!'
-
-          closePage.click()
+          
+          modalBtn.click()
           return
 
         xhr.upload.onerror = (error) ->
@@ -280,11 +316,18 @@ $(document).ready ->
       #//////////////////
 
       startStopBtn.onclick = toggleRecording
-      uploadBtn.onclick = upload
-
-      $('form').on 'ajax:success', ->
-        modalBtn.click()
+      uploadBtn.onclick = ->
+        if validate()
+          upload()
         return
+
+
+      #$('form').on 'submit', ->
+      #  return validate()
+
+      #$('form').on 'ajax:success', ->
+      #  modalBtn.click()
+      #  return
 
       $('#updated-alert').on 'hidden.bs.modal', ->
         closePage.click()
@@ -313,12 +356,18 @@ $(document).ready ->
       # Setup
       #//////////////////
 
+      editForm = document.querySelector('form')
+      titleInput = editForm.querySelector('input#upload_title')
+      descriptionInput = editForm.querySelector('input#upload_description')
       modalBtn = document.querySelector('button#show-modal')
 
 
       #//////////////////
       # Event watchers
       #//////////////////
+
+      $('form').on 'submit', ->
+        return validate()
 
       $('form').on 'ajax:success', ->
         modalBtn.click()

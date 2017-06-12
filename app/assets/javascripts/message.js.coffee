@@ -25,6 +25,15 @@ $(document).ready ->
       # Hidden for now
       # refreshBtn = document.querySelector('button#refresh')
 
+      window.sweetAlertConfirmConfig =
+        title: 'Are you sure?'
+        text: 'You will not be able to recover this recording!'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#DD6B55'
+        confirmButtonText: 'Delete'
+        cancelButtonText: 'Cancel'
+
 
       #//////////////////
       # Event watchers

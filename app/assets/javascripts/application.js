@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require bootstrap_sb_admin_base_v2
 //= require datatables
+//= require sweetalert2
+//= require sweet-alert2-rails
 //= require lodash
 //= require react
 //= require react_ujs

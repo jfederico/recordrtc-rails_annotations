@@ -62,6 +62,10 @@ end
 
 # Use jQuery DataTables for table functionality such as searching
 gem 'jquery-datatables', '1.10.15'
+# Use SweetAlert2 to make nice alert boxes
+gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
+# Use SweetAlert2 Rails gem to override data-confirm with Sweet Alert
+gem 'sweet-alert2-rails'
 
 gem 'rails_12factor', '0.0.3'
 

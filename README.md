@@ -14,14 +14,13 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 ### TO-DO
 * Check to see if newer version of React is behind the bug listed above (EDIT: IT IS)
   * If so, implement newer React code to fix the problem
-* Add validation colors for edit/new pages
-* Add progress bar after upload/edit
-* Use SweetAlert2 for deleting recordings
+* Add progress bar after upload (no need for edit)
 * Find way to size DataTables columns more reasonably
 * Add Delete button to recordrtc show view
 * SEPARATE CONCERNS AGAIN
 * Rename and organize controllers and routes
-* Implement Inspinia theme
+* Use Gon gem to avoid hard-coding form action URLs in the JS
+* Add more documentation for JS
 * Find error in IMS-LTI 2.1.2 gem
 * Standardize by either using only pure JS or only jQuery
 * Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
@@ -35,6 +34,7 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * xmlUrl = the generated url
 * generatedXML = the generated xml in the container
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
+  * Changed all forms to not use Rails form_for, more simple to manipulate every step of form posting. May change later, due to the fact that Rails form_for has additional safety features added.
 * Some other controllers (such as registration) had CSS/JS in a file that did not match the controller name (registration had CSS in guide); eventually these styles will have to be added to their own file
 * Cannot separate concerns for partials or React files
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)

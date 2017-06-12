@@ -10,6 +10,7 @@
  *
  *= require main
  *= require datatables
+ *= require sweetalert2
  *= require guide
  *= require message
  *= require registration
