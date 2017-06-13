@@ -26,4 +26,5 @@
 //= require components
 //= require bowser
 //= require adapter
+//= require js-routes
 //= require_tree .

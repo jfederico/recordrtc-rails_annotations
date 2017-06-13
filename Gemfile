@@ -29,6 +29,8 @@ gem 'jbuilder', '2.7.0'
 gem 'rack-cors', '0.4.1'
 # Use will_paginate to paginate API requests (20 entries per "page", for example)
 gem 'will_paginate', '3.1.5'
+# Use JS-Routes to use Rails URL helpers in JS in the asset pipeline
+gem 'js-routes'
 
 # Use Bootstrap for SASS
 gem 'bootstrap-sass', '3.3.7'

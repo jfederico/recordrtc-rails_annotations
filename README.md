@@ -18,15 +18,14 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Check to see if newer version of React is behind the bug listed above (EDIT: IT IS)
   * If so, implement newer React code to fix the problem
 * Find way to size DataTables columns more reasonably
-* Add alert if browser if below a certain version
 * Rename and organize controllers and routes
-* Use Gon gem to avoid hard-coding form action URLs in the JS
 * Implement Gaffe for error routing
 * Ask Jesus whether it's OK to use lis_full_name from LTI parameters
 * Add more documentation for JS
 * Find error in IMS-LTI 2.1.2 gem
 * Standardize by either using only pure JS or only jQuery
 * Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
+* Examine security of certain routes opened up by js-routes
 * OPTIONAL: Add video thumbnails to home page
 * OPTIONAL: Integrate Shrine's URL storage for cache
 * TBD: Add support for audio recording (need to determine if needed)

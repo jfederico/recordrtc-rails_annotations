@@ -194,7 +194,7 @@ $(document).ready ->
         formData.append 'upload[video]', blob, fileName
 
         # Upload the form data
-        makeXMLHttpRequest 'http://localhost:3000/api/uploads', 'POST', formData
+        makeXMLHttpRequest Routes.api_uploads_path(), 'POST', formData
         return
 
       makeXMLHttpRequest = (url, method, data) ->
