@@ -1,5 +1,5 @@
 <% if @error.present? %>
-  <div style="background-color: red; text-align: center;">
+  <div id="error-div" class="error-or-unknown">
     <h4><%= @error %></h4>
   </div>
 <% end %>
@@ -54,7 +54,7 @@
     </tr>
   <% end %>
   <% @message.unknown_params.each do |k, v| %>
-    <tr style="background-color: red;">
+    <tr class="error-or-unknown">
       <td><b><%= k %>:</b></td>
       <td>Unknown</td>
       <td><%= v %></td>
@@ -64,7 +64,7 @@
 
 <p>
 <h4>Oauth Base String</h4>
-<textarea style="width: 100%; min-height: 100px;" readonly> <%= @header.send(:signature_base) %> </textarea>
+<textarea id="oauth-box" readonly> <%= @header.send(:signature_base) %> </textarea>
 <h4>secret</h4>
 <textarea readonly> <%= @secret %> </textarea>
 </p>

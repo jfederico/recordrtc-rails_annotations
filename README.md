@@ -24,6 +24,7 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Rename and organize controllers and routes
 * Use Gon gem to avoid hard-coding form action URLs in the JS
 * Implement Gaffe for error routing
+* Ask Jesus whether it's OK to use lis_full_name from LTI parameters
 * Add more documentation for JS
 * Find error in IMS-LTI 2.1.2 gem
 * Standardize by either using only pure JS or only jQuery
@@ -39,7 +40,7 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * generatedXML = the generated xml in the container
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
 * Some other controllers (such as registration) had CSS/JS in a file that did not match the controller name (registration had CSS in guide); eventually these styles will have to be added to their own file
-* Cannot separate concerns for partials or React files
+* Cannot separate concerns for React files
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
   * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
 * As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now

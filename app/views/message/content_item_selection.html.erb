@@ -1,7 +1,10 @@
-<header class="title">
-  <h1>Content Item Selection</h1>
-</header>
-<h4>ContentItemResponse</h4>
+<% content_for :page_header do %>
+  Content Item Selection
+<% end %>
+
+<% content_for :panel_heading do %>
+  <strong>ContentItemResponse</strong>
+<% end %>
 
 <% if @message %>
 <%= react_component('ContentItemBuilder',

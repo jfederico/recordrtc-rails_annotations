@@ -34,6 +34,17 @@ $(document).ready ->
         confirmButtonText: 'Delete'
         cancelButtonText: 'Cancel'
 
+      table = $('#uploads-table').dataTable(
+        'stateSave': true
+        'columnDefs': [
+          {
+            'targets': 2
+            'orderable': false
+            'searchable': false
+          }
+        ]
+      )
+
 
       #//////////////////
       # Event watchers

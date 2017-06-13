@@ -1,9 +1,18 @@
+// Color variables
+$error-or-unknown-bg-color: #f00
+
 ////////////////////////////////////////////////////////////////////////////////
 // CSS for CONTROLLER: message, global
 ////////////////////////////////////////////////////////////////////////////////
 
 body
   &.message
-    header
-      &.title
-        text-align: center
+    #oauth-box
+      min-height: 100px
+      width: 100%
+
+    #error-div
+      text-align: center
+
+    .error-or-unknown
+      background-color: $error-or-unknown-bg-color

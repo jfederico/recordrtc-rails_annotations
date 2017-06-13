@@ -14,6 +14,11 @@
  *= require ladda
  *= require guide
  *= require message
+ *= require recordrtc
  *= require registration
  *= require_self
  */
+
+#navbar {
+  margin-bottom: 0;
+}

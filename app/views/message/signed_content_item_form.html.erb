@@ -1,4 +1,4 @@
-<form id="lti_form" action="<%=@launch_params[:launch_url]%>" method="post">
+<form id="lti_form" action="<%= @launch_params[:launch_url] %>" method="post">
   <% @launch_params[:signed_params].each do |k, v| %>
       <input name="<%= k %>" value="<%= v %>" type="hidden" />
   <% end %>
