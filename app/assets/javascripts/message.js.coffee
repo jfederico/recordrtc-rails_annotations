@@ -59,6 +59,16 @@ $(document).ready ->
       ), 5000
 
 
+      #//////////////////
+      # Main logic
+      #//////////////////
+
+      if bowser.firefox and bowser.version >= 29 or
+         bowser.chrome and bowser.version >= 49 or
+         bowser.opera and bowser.version >= 36
+        $('#close-alert').click()
+
+
 
     #///////////////////////////////////////////////////////////////////////////
     # JavaScript for CONTROLLER: message, ACTION: signed_content_item_form

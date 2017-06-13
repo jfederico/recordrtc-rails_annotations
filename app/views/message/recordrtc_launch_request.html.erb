@@ -6,9 +6,22 @@
   Recordings
 <% end %>
 
+<div class="row">
+  <div class="col-lg-12">
+    <div id="browser-version-alert" class="alert alert-warning alert-dismissable">
+        <button id="close-alert" type="button" class="close" data-dismiss="alert">&times;</button>
+        <span class="alert-link">Browser Compatibility Warning</span>. For best results, please consider switching to Firefox &ge; 29, Chrome &ge; 49, or Opera &ge; 36.
+    </div>
+  </div>
+</div>
+
 <!-- Hidden for now -->
 <!-- <button id="refresh" class="btn btn-status"><i class="fa fa-refresh"></i> Refresh</button> -->
 
 <div id="recordings" class="panel-body">
   <%= render 'uploads' %>
 </div>
+
+<script type="text/javascript">
+
+</script>

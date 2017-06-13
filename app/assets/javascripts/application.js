@@ -24,4 +24,6 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require bowser
+//= require adapter
 //= require_tree .
