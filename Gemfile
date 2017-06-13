@@ -31,6 +31,8 @@ gem 'rack-cors', '0.4.1'
 gem 'will_paginate', '3.1.5'
 # Use JS-Routes to use Rails URL helpers in JS in the asset pipeline
 gem 'js-routes'
+# Use Gaffe to easily add custom error pages to the app
+gem 'gaffe'
 
 # Use Bootstrap for SASS
 gem 'bootstrap-sass', '3.3.7'

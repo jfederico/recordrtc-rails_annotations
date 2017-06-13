@@ -40,3 +40,4 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
   * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
 * As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
+* PARTIALLY STARTED INTEGRATING GAFFE. Can start replacing old JSON response code with Gaffe-specific code
