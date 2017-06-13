@@ -19,9 +19,8 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Check to see if newer version of React is behind the bug listed above (EDIT: IT IS)
   * If so, implement newer React code to fix the problem
 * Find way to size DataTables columns more reasonably
-* Add Delete button to recordrtc show view
-  * Need to auto-close page after delete
 * SEPARATE CONCERNS AGAIN
+* Add alert if browser if below a certain version
 * Rename and organize controllers and routes
 * Use Gon gem to avoid hard-coding form action URLs in the JS
 * Implement Gaffe for error routing
@@ -43,4 +42,4 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Cannot separate concerns for partials or React files
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
   * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
-* ​As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
+* As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
