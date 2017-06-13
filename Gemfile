@@ -66,6 +66,8 @@ gem 'jquery-datatables', '1.10.15'
 gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
 # Use SweetAlert2 Rails gem to override data-confirm with Sweet Alert
 gem 'sweet-alert2-rails'
+# Use Ladda for fancy progress buttons
+gem 'ladda-rails'
 
 gem 'rails_12factor', '0.0.3'
 

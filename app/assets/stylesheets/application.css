@@ -11,6 +11,7 @@
  *= require main
  *= require datatables
  *= require sweetalert2
+ *= require ladda
  *= require guide
  *= require message
  *= require registration

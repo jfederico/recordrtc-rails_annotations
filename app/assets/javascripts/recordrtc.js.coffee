@@ -139,7 +139,7 @@ $(document).ready ->
         else
           videoPlayer.src = stream
 
-        # Hide upload form and progress bar if not already hidden
+        # Hide upload form if not already hidden
         uploadForm.style.display = 'none'
 
         `mediaRecorder = new MediaRecorder(window.stream)`
@@ -207,27 +207,26 @@ $(document).ready ->
         xhr.upload.onloadstart = ->
           console.log 'Upload started'
 
-          # Disable buttons
+          # Disable recording button
           startStopBtn.disabled = true
-          uploadBtn.disabled = true
 
-          # Show progress bar
-          progressDIV.style.display = 'initial'
-          progressBar.value = 0
+          # Transform upload button to show progress
+          progressBtn.ladda('start')
           return
 
         xhr.upload.onprogress = (event) ->
           if event.lengthComputable
             console.log 'Upload progress:', parseInt(event.loaded / event.total * 100) + '%'
 
-            # Update progress bar
-            progressBar.max = event.total
-            progressBar.value = event.loaded
+            # Update progress of upload button
+            progressBtn.ladda('setProgress', (event.loaded / event.total))
           return
 
         xhr.upload.onload = ->
           console.log 'Upload ended'
-          
+
+          progressBtn.ladda('stop')
+
           modalBtn.click()
           return
 
@@ -292,8 +291,7 @@ $(document).ready ->
       titleInput = uploadForm.querySelector('input#title')
       descriptionInput = uploadForm.querySelector('input#description')
       uploadBtn = uploadForm.querySelector('button#upload')
-      progressDIV = document.querySelector('div#progress-bar')
-      progressBar = progressDIV.querySelector('progress#progress')
+      progressBtn = $('button#upload').ladda()
       modalBtn = document.querySelector('button#show-modal')
 
       # To make sure connection is secure
@@ -321,14 +319,6 @@ $(document).ready ->
           upload()
         return
 
-
-      #$('form').on 'submit', ->
-      #  return validate()
-
-      #$('form').on 'ajax:success', ->
-      #  modalBtn.click()
-      #  return
-
       $('#updated-alert').on 'hidden.bs.modal', ->
         closePage.click()
         return
@@ -338,9 +328,8 @@ $(document).ready ->
       # Main logic
       #//////////////////
 
-      # Start form and progress bar off hidden
+      # Start form off hidden
       uploadForm.style.display = 'none'
-      progressDIV.style.display = 'none'
 
       # Commence capturing of webcam stream
       navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch errorCallback
@@ -376,4 +365,24 @@ $(document).ready ->
       $('#updated-alert').on 'hidden.bs.modal', ->
         closePage.click()
         return
+
+
+
+    #///////////////////////////////////////////////////////////////////////////
+    # JavaScript for CONTROLLER: recordrtc, ACTION: show
+    #///////////////////////////////////////////////////////////////////////////
+
+    if $('body').hasClass('show')
+      #//////////////////
+      # Setup
+      #//////////////////
+
+      window.sweetAlertConfirmConfig =
+        title: 'Are you sure?'
+        text: 'You will not be able to recover this recording!'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#DD6B55'
+        confirmButtonText: 'Delete'
+        cancelButtonText: 'Cancel'
   return

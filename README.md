@@ -1,6 +1,10 @@
 # README
 ---
 
+This is the open-source version of the app!
+
+
+
 Ruby 2.4.0 + Rails 5.1.1 (+ FFMPEG for recording thumbnails).  
 Use `bundle install` to install all required dependencies.  
 Run `mv sample.env .env` and change the values in the file to suit your environment.  
@@ -14,12 +18,13 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 ### TO-DO
 * Check to see if newer version of React is behind the bug listed above (EDIT: IT IS)
   * If so, implement newer React code to fix the problem
-* Add progress bar after upload (no need for edit)
 * Find way to size DataTables columns more reasonably
 * Add Delete button to recordrtc show view
+  * Need to auto-close page after delete
 * SEPARATE CONCERNS AGAIN
 * Rename and organize controllers and routes
 * Use Gon gem to avoid hard-coding form action URLs in the JS
+* Implement Gaffe for error routing
 * Add more documentation for JS
 * Find error in IMS-LTI 2.1.2 gem
 * Standardize by either using only pure JS or only jQuery
@@ -34,8 +39,6 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * xmlUrl = the generated url
 * generatedXML = the generated xml in the container
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
-  * Changed all forms to not use Rails form_for, more simple to manipulate every step of form posting. May change later, due to the fact that Rails form_for has additional safety features added.
 * Some other controllers (such as registration) had CSS/JS in a file that did not match the controller name (registration had CSS in guide); eventually these styles will have to be added to their own file
 * Cannot separate concerns for partials or React files
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
-* THIS IS THE OPEN-SOURCE VERSION OF THE APP

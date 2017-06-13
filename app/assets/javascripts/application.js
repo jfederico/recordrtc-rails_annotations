@@ -17,6 +17,9 @@
 //= require datatables
 //= require sweetalert2
 //= require sweet-alert2-rails
+//= require spin
+//= require ladda
+//= require ladda.jquery
 //= require lodash
 //= require react
 //= require react_ujs
