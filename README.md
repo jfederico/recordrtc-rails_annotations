@@ -42,3 +42,5 @@ Run `mv config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Some other controllers (such as registration) had CSS/JS in a file that did not match the controller name (registration had CSS in guide); eventually these styles will have to be added to their own file
 * Cannot separate concerns for partials or React files
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
+  * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
+* ​As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
