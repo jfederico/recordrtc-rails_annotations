@@ -68,6 +68,7 @@ $(document).ready ->
     # Event watchers
     #//////////////////
 
+    # Close this tab when 'Close' link is closed
     closePage.onclick = exit
 
 
@@ -225,8 +226,10 @@ $(document).ready ->
         xhr.upload.onload = ->
           console.log 'Upload ended'
 
+          # Make upload button return to normal
           progressBtn.ladda('stop')
 
+          # Open success modal
           modalBtn.click()
           return
 
@@ -314,11 +317,14 @@ $(document).ready ->
       #//////////////////
 
       startStopBtn.onclick = toggleRecording
+
+      # Validate form before sending it off to server
       uploadBtn.onclick = ->
         if validate()
           upload()
         return
 
+      # Close tab when success modal is closed
       $('#updated-alert').on 'hidden.bs.modal', ->
         closePage.click()
         return
@@ -355,13 +361,16 @@ $(document).ready ->
       # Event watchers
       #//////////////////
 
+      # Validate form before sending it off to server
       $('form').on 'submit', ->
         return validate()
 
+      # Open success modal on succesful form submission
       $('form').on 'ajax:success', ->
         modalBtn.click()
         return
 
+      # Close tab when success modal is closed
       $('#updated-alert').on 'hidden.bs.modal', ->
         closePage.click()
         return
@@ -377,6 +386,7 @@ $(document).ready ->
       # Setup
       #//////////////////
 
+      # Configure SweetAlert2 popup
       window.sweetAlertConfirmConfig =
         title: 'Are you sure?'
         text: 'You will not be able to recover this recording!'

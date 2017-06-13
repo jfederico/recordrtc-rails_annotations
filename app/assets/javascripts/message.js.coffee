@@ -25,6 +25,7 @@ $(document).ready ->
       # Hidden for now
       # refreshBtn = document.querySelector('button#refresh')
 
+      # Customize SweetAlert2 dialog
       window.sweetAlertConfirmConfig =
         title: 'Are you sure?'
         text: 'You will not be able to recover this recording!'
@@ -34,6 +35,7 @@ $(document).ready ->
         confirmButtonText: 'Delete'
         cancelButtonText: 'Cancel'
 
+      # Customize DataTables table of all recordings on launch page
       table = $('#uploads-table').dataTable(
         'stateSave': true
         'columnDefs': [
@@ -53,6 +55,7 @@ $(document).ready ->
       # Hidden for now
       # refreshBtn.onclick = refresh
 
+      # Refresh _uploads partial on launch page every 5 seconds
       setInterval (->
         refresh()
         return
@@ -63,6 +66,7 @@ $(document).ready ->
       # Main logic
       #//////////////////
 
+      # Auto-close browser compatibility alert if browser is well-supported
       if bowser.firefox and bowser.version >= 29 or
          bowser.chrome and bowser.version >= 49 or
          bowser.opera and bowser.version >= 36
@@ -95,5 +99,6 @@ $(document).ready ->
       # Main logic
       #//////////////////
 
+      # Submit signed content item form on route request
       submitForm()
   return

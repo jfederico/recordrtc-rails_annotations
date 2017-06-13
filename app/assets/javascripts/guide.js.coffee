@@ -29,5 +29,6 @@ $(document).ready ->
       # Event watchers
       #//////////////////
 
+      # Select text in URL box when it is clicked
       regUrlBox.onclick = selectText
   return

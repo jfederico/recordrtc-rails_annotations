@@ -34,6 +34,7 @@ $(document).ready ->
       # Event watchers
       #//////////////////
 
+      # Check/uncheck all checkboxes in form
       checkAllBtn.onclick = selectAll
       uncheckAllBtn.onclick = unselectAll
   return
