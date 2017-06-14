@@ -6,7 +6,7 @@ $(document).ready ->
   # JavaScript for CONTROLLER: recordrtc, global
   #/////////////////////////////////////////////////////////////////////////////
 
-  if $('body').hasClass('recordrtc')
+  if $('body').hasClass 'recordrtc'
     #//////////////////
     # Helper functions
     #//////////////////
@@ -14,8 +14,8 @@ $(document).ready ->
     # Check to see if title and description are not empty
     validate = ->
       if titleInput.val() is '' and descriptionInput.val() is ''
-        titleInput.parent().addClass('has-error')
-        descriptionInput.parent().addClass('has-error')
+        titleInput.parent().addClass 'has-error'
+        descriptionInput.parent().addClass 'has-error'
         swal(
           title: 'Something\'s missing...'
           text: 'The title and description can\'t be empty!'
@@ -25,8 +25,8 @@ $(document).ready ->
         )
         false
       else if titleInput.val() is ''
-        titleInput.parent().addClass('has-error')
-        descriptionInput.parent().removeClass('has-error')
+        titleInput.parent().addClass 'has-error'
+        descriptionInput.parent().removeClass 'has-error'
         swal(
           title: 'Something\'s missing...'
           text: 'The title can\'t be empty!'
@@ -36,8 +36,8 @@ $(document).ready ->
         )
         false
       else if descriptionInput.val() is ''
-        titleInput.parent().removeClass('has-error')
-        descriptionInput.parent().addClass('has-error')
+        titleInput.parent().removeClass 'has-error'
+        descriptionInput.parent().addClass 'has-error'
         swal(
           title: 'Something\'s missing...'
           text: 'The description can\'t be empty!'
@@ -47,8 +47,8 @@ $(document).ready ->
         )
         false
       else
-        titleInput.parent().removeClass('has-error').addClass('has-success')
-        descriptionInput.parent().removeClass('has-error').addClass('has-success')
+        titleInput.parent().removeClass('has-error').addClass 'has-success'
+        descriptionInput.parent().removeClass('has-error').addClass 'has-success'
         true
 
     exit = ->
@@ -78,7 +78,7 @@ $(document).ready ->
     # JavaScript for CONTROLLER: recordrtc, ACTION: new
     #///////////////////////////////////////////////////////////////////////////
 
-    if $('body').hasClass('new')
+    if $('body').hasClass 'new'
       #//////////////////
       # Helper functions
       #//////////////////
@@ -96,9 +96,9 @@ $(document).ready ->
 
         # Set video player to display webcam stream
         if window.URL
-          videoPlayer.prop('srcObject', window.stream)
+          videoPlayer.prop 'srcObject', window.stream
         else
-          videoPlayer.prop('src', stream)
+          videoPlayer.prop 'srcObject', stream
         return
 
       errorCallback = (error) ->
@@ -118,13 +118,12 @@ $(document).ready ->
         if startStopBtn.html() is '<i class="fa fa-circle"></i> Start Recording' or startStopBtn.html() is '<i class="fa fa-circle"></i> Record Again'
           startRecording()
 
-          startStopBtn.removeClass('btn-outline')
-          startStopBtn.addClass('btn-sm')
+          startStopBtn.removeClass('btn-outline').addClass 'btn-sm'
         else
           stopRecording()
 
-          startStopBtn.addClass('btn-outline')
-          startStopBtn.html('<i class="fa fa-circle"></i> Record Again')
+          startStopBtn.removeClass('btn-sm').addClass 'btn-outline'
+          startStopBtn.html '<i class="fa fa-circle"></i> Record Again'
         return
 
       startRecording = ->
@@ -132,23 +131,23 @@ $(document).ready ->
         `recordedChunks = []`
 
         # Disable controls and mute video player
-        videoPlayer.prop('controls', false)
-        videoPlayer.prop('muted', true)
+        videoPlayer.prop 'controls', false
+        videoPlayer.prop 'muted', true
 
         # Make video player display webcam stream again (for when 'Record Again' is clicked)
         if window.URL
-          videoPlayer.prop('srcObject', window.stream)
+          videoPlayer.prop 'srcObject', window.stream
         else
-          videoPlayer.prop('src', stream)
+          videoPlayer.prop 'srcObject', stream
 
         # Hide upload form if not already hidden
-        uploadForm.css('display', 'none')
+        uploadForm.css 'display', 'none'
 
         `mediaRecorder = new MediaRecorder(window.stream)`
         console.log 'Created MediaRecorder', mediaRecorder
 
         # Begin recording countdown timer
-        startStopBtn.html('<i class="fa fa-stop-circle"></i> Stop Recording (<label id="minutes">02</label>:<label id="seconds">00</label>)')
+        startStopBtn.html '<i class="fa fa-stop-circle"></i> Stop Recording (<label id="minutes">02</label>:<label id="seconds">00</label>)'
         `countdownSeconds = 120`
         `countdownTicker = setInterval(function () {
           setTime();
@@ -166,21 +165,21 @@ $(document).ready ->
         clearInterval countdownTicker
 
         # Disable "Record Again" button for 1s to allow background processing (closing streams)
-        setTimeout (->
-          startStopBtn.prop('disabled', false)
+        setTimeout ->
+          startStopBtn.prop 'disabled', false
           return
-        ), 1000
+        , 1000
 
         mediaRecorder.stop()
 
         `blob = new Blob(recordedChunks, { type: 'video/webm' })`
         # Set video player to play final recording, in true video player style
-        videoPlayer.prop('src', window.URL.createObjectURL(blob))
-        videoPlayer.prop('controls', true)
-        videoPlayer.prop('muted', false)
+        videoPlayer.prop 'src', window.URL.createObjectURL blob
+        videoPlayer.prop 'controls', true
+        videoPlayer.prop 'muted', false
 
         # Unhide upload form
-        uploadForm.css('display', 'initial')
+        uploadForm.css 'display', 'initial'
         return
 
       upload = ->
@@ -210,10 +209,10 @@ $(document).ready ->
           console.log 'Upload started'
 
           # Disable recording button
-          startStopBtn.prop('disabled', true)
+          startStopBtn.prop 'disabled', true
 
           # Transform upload button to show progress
-          progressBtn.ladda('start')
+          progressBtn.ladda 'start'
           return
 
         xhr.upload.onprogress = (event) ->
@@ -221,14 +220,14 @@ $(document).ready ->
             console.log 'Upload progress:', parseInt(event.loaded / event.total * 100) + '%'
 
             # Update progress of upload button
-            progressBtn.ladda('setProgress', (event.loaded / event.total))
+            progressBtn.ladda 'setProgress', (event.loaded / event.total)
           return
 
         xhr.upload.onload = ->
           console.log 'Upload ended'
 
           # Make upload button return to normal
-          progressBtn.ladda('stop')
+          progressBtn.ladda 'stop'
 
           # Open success modal
           modalBtn.click()
@@ -262,8 +261,8 @@ $(document).ready ->
       setTime = ->
         countdownSeconds--
 
-        startStopBtn.children('label#seconds').html(pad(countdownSeconds % 60))
-        startStopBtn.children('label#minutes').html(pad(parseInt(countdownSeconds / 60)))
+        startStopBtn.children('label#seconds').html pad(countdownSeconds % 60)
+        startStopBtn.children('label#minutes').html pad(parseInt(countdownSeconds / 60))
 
         if `countdownSeconds == 0`
           startStopBtn.click()
@@ -292,9 +291,9 @@ $(document).ready ->
       videoPlayer = $('video#video-player')
       startStopBtn = $('button#start-stop')
       uploadForm = $('div#upload-form')
-      titleInput = uploadForm.find('input#title')
-      descriptionInput = uploadForm.find('input#description')
-      uploadBtn = uploadForm.children('button#upload')
+      titleInput = uploadForm.find 'input#title'
+      descriptionInput = uploadForm.find 'input#description'
+      uploadBtn = uploadForm.children 'button#upload'
       progressBtn = uploadBtn.ladda()
       modal = $('#updated-alert')
       modalBtn = $('button#show-modal')
@@ -339,10 +338,10 @@ $(document).ready ->
       #//////////////////
 
       # Start form off hidden
-      uploadForm.css('display', 'none')
+      uploadForm.css 'display', 'none'
 
       # Commence capturing of webcam stream
-      navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch errorCallback
+      navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch(errorCallback)
 
 
 
@@ -350,14 +349,14 @@ $(document).ready ->
     # JavaScript for CONTROLLER: recordrtc, ACTION: edit
     #///////////////////////////////////////////////////////////////////////////
 
-    if $('body').hasClass('edit')
+    if $('body').hasClass 'edit'
       #//////////////////
       # Setup
       #//////////////////
 
       editForm = $('form')
-      titleInput = editForm.find('input#upload_title')
-      descriptionInput = editForm.find('input#upload_description')
+      titleInput = editForm.find 'input#upload_title'
+      descriptionInput = editForm.find 'input#upload_description'
       modal = $('#updated-alert')
       modalBtn = $('button#show-modal')
 
@@ -386,7 +385,7 @@ $(document).ready ->
     # JavaScript for CONTROLLER: recordrtc, ACTION: show
     #///////////////////////////////////////////////////////////////////////////
 
-    if $('body').hasClass('show')
+    if $('body').hasClass 'show'
       #//////////////////
       # Setup
       #//////////////////

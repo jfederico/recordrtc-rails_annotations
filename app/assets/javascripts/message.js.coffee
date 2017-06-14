@@ -3,12 +3,12 @@ $(document).ready ->
   # JavaScript for CONTROLLER: message, global
   #/////////////////////////////////////////////////////////////////////////////
 
-  if $('body').hasClass('message')
+  if $('body').hasClass 'message'
     #///////////////////////////////////////////////////////////////////////////
     # JavaScript for CONTROLLER: message, ACTION: recordrtc_launch_request
     #///////////////////////////////////////////////////////////////////////////
 
-    if $('body').hasClass('recordrtc_launch_request')
+    if $('body').hasClass 'recordrtc_launch_request'
       #//////////////////
       # Helper functions
       #//////////////////
@@ -79,7 +79,7 @@ $(document).ready ->
     # JavaScript for CONTROLLER: message, ACTION: signed_content_item_form
     #///////////////////////////////////////////////////////////////////////////
 
-    if $('body').hasClass('signed_content_item_form')
+    if $('body').hasClass 'signed_content_item_form'
       #//////////////////
       # Helper functions
       #//////////////////
