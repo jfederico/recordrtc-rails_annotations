@@ -21,6 +21,8 @@ class MessageController < ApplicationController
   end
 
   def basic_lti_launch_request
+    @disable_nav = true
+    
     process_message
   end
 

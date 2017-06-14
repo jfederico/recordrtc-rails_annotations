@@ -2,9 +2,12 @@ require 'ims/lti'
 
 class GuideController < ApplicationController
   def home
+    @disable_nav = true
   end
 
   def xml_builder
+    @disable_nav = true
+
     @placements = CanvasExtensions::PLACEMENTS
   end
 

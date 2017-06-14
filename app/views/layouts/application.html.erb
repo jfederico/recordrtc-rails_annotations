@@ -14,25 +14,29 @@
 </head>
 
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
-  <div id="wrapper" class="">
-    <%= render 'layouts/navbar' %>
-  </div>
+  <% unless @disable_nav %>
+    <div id="wrapper" class="">
+      <%= render 'layouts/navbar' %>
+    </div>
 
-  <div id="page-wrapper">
-    <%= render 'layouts/title' %>
-    <%= render 'layouts/messages' %>
+    <div id="page-wrapper">
+      <%= render 'layouts/title' %>
+      <%= render 'layouts/messages' %>
 
-    <div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <%= content_for?(:panel_heading) ? yield(:panel_heading) : "Dashboard" %>
-        </div>
+      <div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= content_for?(:panel_heading) ? yield(:panel_heading) : "Dashboard" %>
+          </div>
 
-        <div class="panel-body">
-          <%= yield %>
+          <div class="panel-body">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
 </body>
 </html>
