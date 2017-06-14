@@ -15,7 +15,7 @@ var XmlBuilder = React.createClass({
 
   formChangeHandler: function () {
     var xml_str = "";
-    var url = this.props.baseUrl + "?" + this.refs.xmlForm.serialize();
+    var url = this.props.baseUrl + "?" + $(this.refs.xmlForm).serialize();
 
     $.get(url, function(data) {
       this.setState({
@@ -31,17 +31,17 @@ var XmlBuilder = React.createClass({
 
   render: function () {
     var formChangeHandler = this.formChangeHandler;
-      
+
       return (
       <div className="container">
         <h2 className="text-center">XML Builder</h2>
 
-        <p>
-          <p><span style={{'font-weight': 'bold'}}>Consumer key:</span> 'key'</p>
-          <p><span style={{'font-weight': 'bold'}}>Consumer secret:</span> 'secret'</p>
+        <div>
+          <p><span style={{'fontWeight': 'bold'}}>Consumer key:</span> 'key'</p>
+          <p><span style={{'fontWeight': 'bold'}}>Consumer secret:</span> 'secret'</p>
           <label htmlFor="xml-uri">XML URL:</label>
           <input onClick={this.xmlUrlClickHandler} style={{cursor: 'text'}} ref="xmlUrl" id="xml-url" value={this.state.xmlUrl} className="form-control form-read-only" readOnly type="text"/>
-        </p>
+        </div>
 
 
           <div className="row">

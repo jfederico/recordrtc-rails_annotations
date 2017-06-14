@@ -5,8 +5,8 @@ XmlBuilder.Placements.MessageChoice = React.createClass({
             var title = this.props.title
             return (
                 <select name={ this.props.placementKey + '_message_type' } >
-                    {messages.map(function(message){
-                        return (<option name={ title + '  Message Type' } value={ message } >{ message }</option>);
+                    {messages.map(function(message, index){
+                        return (<option key={index} name={ title + '  Message Type' } value={ message } >{ message }</option>);
                     })}
                 </select>
             );

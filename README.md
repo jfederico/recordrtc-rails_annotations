@@ -13,7 +13,6 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 
 ### KNOWN BUGS
 * IMS-LTI gem version 2.1.2 produces ``undefined method `valid_signature?'`` error; must use 2.0.0beta41 for now
-* Using React-Rails 2.2.0 (latest as of time of writing) breaks the page where you can select LTI 2.0 options and it generates the XML cartridge; must use 1.5.0 for now
 
 ### TO-DO
 * Rename and organize controllers and routes
