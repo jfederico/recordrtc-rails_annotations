@@ -46,7 +46,7 @@ gem 'react-rails', '2.2.0'
 gem 'lodash-rails', '4.17.4'
 
 # Use Passenger for serving in production
-gem 'passenger', '5.1.4'
+# gem 'passenger', '5.1.4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
