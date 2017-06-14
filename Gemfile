@@ -78,9 +78,8 @@ gem 'rails_12factor', '0.0.3'
 # Use Simple OAuth to build and verify headers
 gem 'simple_oauth', '0.2.0'
 # Use IMS-LTI and sample Rails LTI app to add LTI features
-gem 'ims-lti', '2.0.0.beta.41'
-#gem 'ims-lti', git: 'https://github.com/blindsidenetworks/ims-lti.git', ref: 'b213fc81cc87aea76f596fb99e65dfe95d6b212d'
-gem 'rails_lti2_provider', git: 'https://github.com/blindsidenetworks/rails_lti2_provider.git', ref: 'b0bd051b505b0b5a894423bb1a3e36969d46095d'
+gem 'ims-lti', '2.1.2'
+gem 'rails_lti2_provider', git: 'https://github.com/blindsidenetworks/rails_lti2_provider.git', ref: 'd350174fafc323670ec8bb5ca652d9753841f5e7'
 
 # Use Shrine for file uploads
 gem 'shrine', '2.6.1'

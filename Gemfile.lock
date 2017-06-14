@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/blindsidenetworks/rails_lti2_provider.git
-  revision: b0bd051b505b0b5a894423bb1a3e36969d46095d
-  ref: b0bd051b505b0b5a894423bb1a3e36969d46095d
+  revision: d350174fafc323670ec8bb5ca652d9753841f5e7
+  ref: d350174fafc323670ec8bb5ca652d9753841f5e7
   specs:
     rails_lti2_provider (0.0.1)
       ims-lti
@@ -93,8 +93,8 @@ GEM
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
-    ims-lti (2.0.0.beta.41)
-      builder
+    ims-lti (2.1.2)
+      builder (~> 3.2)
       faraday (~> 0.8)
       faraday_middleware (~> 0.8)
       simple_oauth (= 0.2)
@@ -254,7 +254,7 @@ DEPENDENCIES
   coffee-rails (= 4.2.2)
   dotenv-rails (= 2.2.1)
   gaffe
-  ims-lti (= 2.0.0.beta.41)
+  ims-lti (= 2.1.2)
   jbuilder (= 2.7.0)
   jquery-datatables (= 1.10.15)
   jquery-rails (= 4.3.1)

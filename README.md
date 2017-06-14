@@ -10,10 +10,6 @@ Use `bundle install` to install all required dependencies.
 Run `cp sample.env .env` and change the values in the file to suit your environment.  
 Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_token.rb` and place your generated secret key (follow instructions in file) in `secret_key_base`.
 
-
-### KNOWN BUGS
-* IMS-LTI gem version 2.1.2 produces ``undefined method `valid_signature?'`` error; must use 2.0.0beta41 for now
-
 ### TO-DO
 * Rename and organize controllers and routes
 * Find error in IMS-LTI 2.1.2 gem
@@ -25,8 +21,6 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 
 ### NOTES
 
-* xmlUrl = the generated url
-* generatedXML = the generated xml in the container
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
 * Some other controllers (such as registration) had CSS/JS in a file that did not match the controller name (registration had CSS in guide); eventually these styles will have to be added to their own file
 * Cannot separate concerns for React files
