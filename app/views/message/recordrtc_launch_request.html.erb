@@ -1,5 +1,9 @@
 <% content_for :page_header do %>
-  <%= @message.lis_person_name_full %>
+  <% if defined?(@message.custom_lis_person_name_full) %>
+    <%= @message.custom_lis_person_name_full %>
+  <% elsif defined?(@message.lis_person_name_full) %>
+    <%= @message.lis_person_name_full %>
+  <% end %>
 <% end %>
 
 <% content_for :panel_heading do %>
