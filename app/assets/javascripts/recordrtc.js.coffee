@@ -11,10 +11,11 @@ $(document).ready ->
     # Helper functions
     #//////////////////
 
+    # Check to see if title and description are not empty
     validate = ->
-      if titleInput.value is '' and descriptionInput.value is ''
-        titleInput.parentElement.classList.add 'has-error'
-        descriptionInput.parentElement.classList.add 'has-error'
+      if titleInput.val() is '' and descriptionInput.val() is ''
+        titleInput.parent().addClass('has-error')
+        descriptionInput.parent().addClass('has-error')
         swal(
           title: 'Something\'s missing...'
           text: 'The title and description can\'t be empty!'
@@ -23,9 +24,9 @@ $(document).ready ->
           confirmButtonText: 'OK'
         )
         false
-      else if titleInput.value is ''
-        descriptionInput.parentElement.classList.remove 'has-error'
-        titleInput.parentElement.classList.add 'has-error'
+      else if titleInput.val() is ''
+        titleInput.parent().addClass('has-error')
+        descriptionInput.parent().removeClass('has-error')
         swal(
           title: 'Something\'s missing...'
           text: 'The title can\'t be empty!'
@@ -34,9 +35,9 @@ $(document).ready ->
           confirmButtonText: 'OK'
         )
         false
-      else if descriptionInput.value is ''
-        titleInput.parentElement.classList.remove 'has-error'
-        descriptionInput.parentElement.classList.add 'has-error'
+      else if descriptionInput.val() is ''
+        titleInput.parent().removeClass('has-error')
+        descriptionInput.parent().addClass('has-error')
         swal(
           title: 'Something\'s missing...'
           text: 'The description can\'t be empty!'
@@ -46,10 +47,8 @@ $(document).ready ->
         )
         false
       else
-        titleInput.parentElement.classList.remove 'has-error'
-        descriptionInput.parentElement.classList.remove 'has-error'
-        titleInput.parentElement.classList.add 'has-success'
-        descriptionInput.parentElement.classList.add 'has-success'
+        titleInput.parent().removeClass('has-error').addClass('has-success')
+        descriptionInput.parent().removeClass('has-error').addClass('has-success')
         true
 
     exit = ->
@@ -61,7 +60,7 @@ $(document).ready ->
     # Setup
     #//////////////////
 
-    closePage = document.querySelector('a#back')
+    closePage = $('a#back')
 
 
     #//////////////////
@@ -69,7 +68,9 @@ $(document).ready ->
     #//////////////////
 
     # Close this tab when 'Close' link is closed
-    closePage.onclick = exit
+    closePage.click ->
+      exit()
+      return
 
 
 
@@ -95,9 +96,9 @@ $(document).ready ->
 
         # Set video player to display webcam stream
         if window.URL
-          videoPlayer.src = window.URL.createObjectURL(stream)
+          videoPlayer.prop('srcObject', window.stream)
         else
-          videoPlayer.src = stream
+          videoPlayer.prop('src', stream)
         return
 
       errorCallback = (error) ->
@@ -114,16 +115,16 @@ $(document).ready ->
         return
 
       toggleRecording = ->
-        if startStopBtn.innerHTML is '<i class="fa fa-circle"></i> Start Recording' or startStopBtn.innerHTML is '<i class="fa fa-circle"></i> Record Again'
+        if startStopBtn.html() is '<i class="fa fa-circle"></i> Start Recording' or startStopBtn.html() is '<i class="fa fa-circle"></i> Record Again'
           startRecording()
 
-          startStopBtn.classList.remove 'btn-outline'
-          startStopBtn.classList.add 'btn-sm'
+          startStopBtn.removeClass('btn-outline')
+          startStopBtn.addClass('btn-sm')
         else
           stopRecording()
 
-          startStopBtn.classList.add 'btn-outline'
-          startStopBtn.innerHTML = '<i class="fa fa-circle"></i> Record Again'
+          startStopBtn.addClass('btn-outline')
+          startStopBtn.html('<i class="fa fa-circle"></i> Record Again')
         return
 
       startRecording = ->
@@ -131,23 +132,23 @@ $(document).ready ->
         `recordedChunks = []`
 
         # Disable controls and mute video player
-        videoPlayer.controls = false
-        videoPlayer.muted = true
+        videoPlayer.prop('controls', false)
+        videoPlayer.prop('muted', true)
 
         # Make video player display webcam stream again (for when 'Record Again' is clicked)
         if window.URL
-          videoPlayer.src = window.URL.createObjectURL(stream)
+          videoPlayer.prop('srcObject', window.stream)
         else
-          videoPlayer.src = stream
+          videoPlayer.prop('src', stream)
 
         # Hide upload form if not already hidden
-        uploadForm.style.display = 'none'
+        uploadForm.css('display', 'none')
 
         `mediaRecorder = new MediaRecorder(window.stream)`
         console.log 'Created MediaRecorder', mediaRecorder
 
         # Begin recording countdown timer
-        startStopBtn.innerHTML = '<i class="fa fa-stop-circle"></i> Stop Recording (<label id="minutes">02</label>:<label id="seconds">00</label>)'
+        startStopBtn.html('<i class="fa fa-stop-circle"></i> Stop Recording (<label id="minutes">02</label>:<label id="seconds">00</label>)')
         `countdownSeconds = 120`
         `countdownTicker = setInterval(function () {
           setTime();
@@ -166,7 +167,7 @@ $(document).ready ->
 
         # Disable "Record Again" button for 1s to allow background processing (closing streams)
         setTimeout (->
-          startStopBtn.disabled = false
+          startStopBtn.prop('disabled', false)
           return
         ), 1000
 
@@ -174,12 +175,12 @@ $(document).ready ->
 
         `blob = new Blob(recordedChunks, { type: 'video/webm' })`
         # Set video player to play final recording, in true video player style
-        videoPlayer.src = window.URL.createObjectURL(blob)
-        videoPlayer.controls = true
-        videoPlayer.muted = false
+        videoPlayer.prop('src', window.URL.createObjectURL(blob))
+        videoPlayer.prop('controls', true)
+        videoPlayer.prop('muted', false)
 
         # Unhide upload form
-        uploadForm.style.display = 'initial'
+        uploadForm.css('display', 'initial')
         return
 
       upload = ->
@@ -190,8 +191,8 @@ $(document).ready ->
 
         # Make form data using user input from form
         formData = new FormData
-        formData.append 'upload[title]', titleInput.value
-        formData.append 'upload[description]', descriptionInput.value
+        formData.append 'upload[title]', titleInput.val()
+        formData.append 'upload[description]', descriptionInput.val()
         formData.append 'upload[video]', blob, fileName
 
         # Upload the form data
@@ -209,7 +210,7 @@ $(document).ready ->
           console.log 'Upload started'
 
           # Disable recording button
-          startStopBtn.disabled = true
+          startStopBtn.prop('disabled', true)
 
           # Transform upload button to show progress
           progressBtn.ladda('start')
@@ -261,8 +262,8 @@ $(document).ready ->
       setTime = ->
         countdownSeconds--
 
-        startStopBtn.querySelector('label#seconds').innerHTML = pad(countdownSeconds % 60)
-        startStopBtn.querySelector('label#minutes').innerHTML = pad(parseInt(countdownSeconds / 60))
+        startStopBtn.children('label#seconds').html(pad(countdownSeconds % 60))
+        startStopBtn.children('label#minutes').html(pad(parseInt(countdownSeconds / 60)))
 
         if `countdownSeconds == 0`
           startStopBtn.click()
@@ -288,14 +289,15 @@ $(document).ready ->
       countdownTicker = null
 
       # Create names for important HTML elements
-      videoPlayer = document.querySelector('video#video-player')
-      startStopBtn = document.querySelector('button#start-stop')
-      uploadForm = document.querySelector('div#upload-form')
-      titleInput = uploadForm.querySelector('input#title')
-      descriptionInput = uploadForm.querySelector('input#description')
-      uploadBtn = uploadForm.querySelector('button#upload')
-      progressBtn = $('button#upload').ladda()
-      modalBtn = document.querySelector('button#show-modal')
+      videoPlayer = $('video#video-player')
+      startStopBtn = $('button#start-stop')
+      uploadForm = $('div#upload-form')
+      titleInput = uploadForm.find('input#title')
+      descriptionInput = uploadForm.find('input#description')
+      uploadBtn = uploadForm.children('button#upload')
+      progressBtn = uploadBtn.ladda()
+      modal = $('#updated-alert')
+      modalBtn = $('button#show-modal')
 
       # To make sure connection is secure
       #var isSecureOrigin = location.protocol === 'https:' ||
@@ -316,16 +318,18 @@ $(document).ready ->
       # Event watchers
       #//////////////////
 
-      startStopBtn.onclick = toggleRecording
+      startStopBtn.click ->
+        toggleRecording()
+        return
 
       # Validate form before sending it off to server
-      uploadBtn.onclick = ->
+      uploadBtn.click ->
         if validate()
           upload()
         return
 
       # Close tab when success modal is closed
-      $('#updated-alert').on 'hidden.bs.modal', ->
+      modal.on 'hidden.bs.modal', ->
         closePage.click()
         return
 
@@ -335,7 +339,7 @@ $(document).ready ->
       #//////////////////
 
       # Start form off hidden
-      uploadForm.style.display = 'none'
+      uploadForm.css('display', 'none')
 
       # Commence capturing of webcam stream
       navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch errorCallback
@@ -351,10 +355,11 @@ $(document).ready ->
       # Setup
       #//////////////////
 
-      editForm = document.querySelector('form')
-      titleInput = editForm.querySelector('input#upload_title')
-      descriptionInput = editForm.querySelector('input#upload_description')
-      modalBtn = document.querySelector('button#show-modal')
+      editForm = $('form')
+      titleInput = editForm.find('input#upload_title')
+      descriptionInput = editForm.find('input#upload_description')
+      modal = $('#updated-alert')
+      modalBtn = $('button#show-modal')
 
 
       #//////////////////
@@ -362,16 +367,16 @@ $(document).ready ->
       #//////////////////
 
       # Validate form before sending it off to server
-      $('form').on 'submit', ->
+      editForm.on 'submit', ->
         return validate()
 
       # Open success modal on succesful form submission
-      $('form').on 'ajax:success', ->
+      editForm.on 'ajax:success', ->
         modalBtn.click()
         return
 
       # Close tab when success modal is closed
-      $('#updated-alert').on 'hidden.bs.modal', ->
+      modal.on 'hidden.bs.modal', ->
         closePage.click()
         return
 

@@ -26,8 +26,8 @@ $(document).ready ->
       # Setup
       #//////////////////
 
-      checkAllBtn = document.querySelector('button#checkAll')
-      uncheckAllBtn = document.querySelector('button#uncheckAll')
+      checkAllBtn = $('button#checkAll')
+      uncheckAllBtn = $('button#uncheckAll')
 
 
       #//////////////////
@@ -35,6 +35,10 @@ $(document).ready ->
       #//////////////////
 
       # Check/uncheck all checkboxes in form
-      checkAllBtn.onclick = selectAll
-      uncheckAllBtn.onclick = unselectAll
+      checkAllBtn.click ->
+        selectAll()
+        return
+      uncheckAllBtn.click ->
+        unselectAll()
+        return
   return

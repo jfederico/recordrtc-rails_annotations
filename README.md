@@ -17,11 +17,10 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 ### TO-DO
 * Check to see if newer version of React is behind the bug listed above (EDIT: IT IS)
   * If so, implement newer React code to fix the problem
-* Find way to size DataTables columns more reasonably
 * Rename and organize controllers and routes
 * Ask Jesus whether it's OK to use lis_full_name from LTI parameters
 * Find error in IMS-LTI 2.1.2 gem
-* Standardize by either using only pure JS or only jQuery
+* Standardize use or not of parentheses in CoffeeScript files
 * Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
 * Examine security of certain routes opened up by js-routes
 * OPTIONAL: Add video thumbnails to home page
@@ -38,4 +37,5 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 * Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
   * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
 * As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
+* DataTables is causing column-resizing troubles. For now, the too-large "Actions" column is not such a big deal
 * PARTIALLY STARTED INTEGRATING GAFFE. Can start replacing old JSON response code with Gaffe-specific code

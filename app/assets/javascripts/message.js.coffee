@@ -22,6 +22,7 @@ $(document).ready ->
       # Setup
       #//////////////////
 
+      closeCompatibilityAlert = $('#close-alert')
       # Hidden for now
       # refreshBtn = document.querySelector('button#refresh')
 
@@ -37,7 +38,7 @@ $(document).ready ->
 
       # Customize DataTables table of all recordings on launch page
       table = $('#uploads-table').dataTable(
-        'stateSave': true
+        'stateSave': true,
         'columnDefs': [
           {
             'targets': 2
@@ -56,10 +57,10 @@ $(document).ready ->
       # refreshBtn.onclick = refresh
 
       # Refresh _uploads partial on launch page every 5 seconds
-      setInterval (->
+      setInterval ->
         refresh()
         return
-      ), 5000
+      , 5000
 
 
       #//////////////////
@@ -70,7 +71,7 @@ $(document).ready ->
       if bowser.firefox and bowser.version >= 29 or
          bowser.chrome and bowser.version >= 49 or
          bowser.opera and bowser.version >= 36
-        $('#close-alert').click()
+        closeCompatibilityAlert.click()
 
 
 
@@ -92,7 +93,7 @@ $(document).ready ->
       # Setup
       #//////////////////
 
-      paramsForm = document.querySelector('form#lti_form')
+      paramsForm = $('form#lti_form')
 
 
       #//////////////////

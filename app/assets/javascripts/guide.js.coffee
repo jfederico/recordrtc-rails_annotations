@@ -10,19 +10,10 @@ $(document).ready ->
 
     if $('body').hasClass('home')
       #//////////////////
-      # Helper functions
-      #//////////////////
-
-      selectText = ->
-        @select()
-        return
-
-
-      #//////////////////
       # Setup
       #//////////////////
 
-      regUrlBox = document.querySelector('input.form-control')
+      regUrlBox = $('input.form-control')
 
 
       #//////////////////
@@ -30,5 +21,7 @@ $(document).ready ->
       #//////////////////
 
       # Select text in URL box when it is clicked
-      regUrlBox.onclick = selectText
+      regUrlBox.click ->
+        regUrlBox.select()
+        return
   return
