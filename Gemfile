@@ -66,7 +66,7 @@ end
 
 group :production do
   # Use Passenger for serving in production
-  # gem 'passenger', '5.1.4'
+  gem 'passenger', '5.1.4'
 end
 
 # Use jQuery DataTables for table functionality such as searching
@@ -84,7 +84,7 @@ gem 'rails_12factor', '0.0.3'
 gem 'simple_oauth', '0.2.0'
 # Use IMS-LTI and sample Rails LTI app to add LTI features
 gem 'ims-lti', '2.1.2'
-gem 'rails_lti2_provider', git: 'https://github.com/jacobprudhomme/rails_lti2_provider.git', ref: '906258e4b58f9d59a3ce62da4d84502c1b89396c'
+gem 'rails_lti2_provider', git: 'https://github.com/jacobprudhomme/rails_lti2_provider.git', ref: '9fd60e0eb895880ea21e4e5ec50e6087a09349e1'
 #gem 'rails_lti2_provider', git: 'https://github.com/blindsidenetworks/rails_lti2_provider.git', ref: 'd350174fafc323670ec8bb5ca652d9753841f5e7'
 
 # Use Shrine for file uploads

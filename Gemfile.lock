@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/jacobprudhomme/rails_lti2_provider.git
-  revision: 906258e4b58f9d59a3ce62da4d84502c1b89396c
-  ref: 906258e4b58f9d59a3ce62da4d84502c1b89396c
+  revision: 9fd60e0eb895880ea21e4e5ec50e6087a09349e1
+  ref: 9fd60e0eb895880ea21e4e5ec50e6087a09349e1
   specs:
     rails_lti2_provider (0.0.1)
       ims-lti
@@ -130,6 +130,9 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    passenger (5.1.4)
+      rack
+      rake (>= 0.8.1)
     pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -257,6 +260,7 @@ DEPENDENCIES
   ladda-rails
   listen (= 3.1.5)
   lodash-rails (= 4.17.4)
+  passenger (= 5.1.4)
   pg (= 0.20.0)
   pry
   puma (= 3.9.1)
