@@ -7,7 +7,10 @@ class RegistrationController < ApplicationController
   after_action :disable_xframe_header
 
   def register
+    @disable_nav = true
+
     #tool_setting_service = %w(LtiLink.custom.url ToolProxyBinding.custom.url ToolProxy.custom.url)
+
     filter_out = [
         IMS::LTI::Models::Messages::BasicLTILaunchRequest::MESSAGE_TYPE,
         IMS::LTI::Models::Messages::ToolProxyReregistrationRequest::MESSAGE_TYPE
@@ -34,6 +37,7 @@ class RegistrationController < ApplicationController
       end
     end
 
+    @registration.save!
   end
 
   def save_capabilities

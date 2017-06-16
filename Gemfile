@@ -32,7 +32,7 @@ gem 'will_paginate', '3.1.5'
 # Use JS-Routes to use Rails URL helpers in JS in the asset pipeline
 gem 'js-routes'
 # Use Gaffe to easily add custom error pages to the app
-gem 'gaffe'
+#gem 'gaffe'
 
 # Use Bootstrap for SASS
 gem 'bootstrap-sass', '3.3.7'
@@ -45,9 +45,6 @@ gem 'react-rails', '2.2.0'
 # Use Lodash as a JavaScript library
 gem 'lodash-rails', '4.17.4'
 
-# Use Passenger for serving in production
-# gem 'passenger', '5.1.4'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -56,12 +53,20 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
+
+  # Use Puma for serving in development
+  gem 'puma', '3.9.1'
 end
 
 group :development, :test do
   gem 'pry', require: 'pry'
   gem 'byebug', '9.0.6'
   gem 'rspec-rails', '3.6.0'
+end
+
+group :production do
+  # Use Passenger for serving in production
+  # gem 'passenger', '5.1.4'
 end
 
 # Use jQuery DataTables for table functionality such as searching
@@ -79,7 +84,8 @@ gem 'rails_12factor', '0.0.3'
 gem 'simple_oauth', '0.2.0'
 # Use IMS-LTI and sample Rails LTI app to add LTI features
 gem 'ims-lti', '2.1.2'
-gem 'rails_lti2_provider', git: 'https://github.com/blindsidenetworks/rails_lti2_provider.git', ref: 'd350174fafc323670ec8bb5ca652d9753841f5e7'
+gem 'rails_lti2_provider', git: 'https://github.com/jacobprudhomme/rails_lti2_provider.git', ref: '906258e4b58f9d59a3ce62da4d84502c1b89396c'
+#gem 'rails_lti2_provider', git: 'https://github.com/blindsidenetworks/rails_lti2_provider.git', ref: 'd350174fafc323670ec8bb5ca652d9753841f5e7'
 
 # Use Shrine for file uploads
 gem 'shrine', '2.6.1'

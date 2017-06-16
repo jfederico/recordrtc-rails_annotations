@@ -10,8 +10,14 @@ Use `bundle install` to install all required dependencies.
 Run `cp sample.env .env` and change the values in the file to suit your environment.  
 Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_token.rb` and place your generated secret key (follow instructions in file) in `secret_key_base`.
 
+### KNOWN BUGS
+
+* CoffeeScript for registration controller doesn't work, as the registration view is wrapped in the LMS's HTML and doesn't have its own controller/action-identified body tag
+
 ### TO-DO
+
 * Rename and organize controllers and routes
+* Integrate Gaffe for error pages
 * Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
 * Examine security of certain routes opened up by js-routes
 * OPTIONAL: Add video thumbnails to home page
@@ -27,4 +33,4 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
   * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
 * As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
 * DataTables is causing column-resizing troubles. For now, the too-large "Actions" column is not such a big deal
-* PARTIALLY STARTED INTEGRATING GAFFE. Can start replacing old JSON response code with Gaffe-specific code
+* Launch controller might be useless; to see

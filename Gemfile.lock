@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/blindsidenetworks/rails_lti2_provider.git
-  revision: d350174fafc323670ec8bb5ca652d9753841f5e7
-  ref: d350174fafc323670ec8bb5ca652d9753841f5e7
+  remote: https://github.com/jacobprudhomme/rails_lti2_provider.git
+  revision: 906258e4b58f9d59a3ce62da4d84502c1b89396c
+  ref: 906258e4b58f9d59a3ce62da4d84502c1b89396c
   specs:
     rails_lti2_provider (0.0.1)
       ims-lti
@@ -88,8 +88,6 @@ GEM
     ffi (1.9.18)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
-    gaffe (1.2.0)
-      rails (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
@@ -137,6 +135,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (3.9.1)
     rack (2.0.3)
     rack-cors (0.4.1)
     rack-test (0.6.3)
@@ -250,7 +249,6 @@ DEPENDENCIES
   byebug (= 9.0.6)
   coffee-rails (= 4.2.2)
   dotenv-rails (= 2.2.1)
-  gaffe
   ims-lti (= 2.1.2)
   jbuilder (= 2.7.0)
   jquery-datatables (= 1.10.15)
@@ -261,6 +259,7 @@ DEPENDENCIES
   lodash-rails (= 4.17.4)
   pg (= 0.20.0)
   pry
+  puma (= 3.9.1)
   rack-cors (= 0.4.1)
   rails (= 5.1.1)
   rails-assets-sweetalert2!
