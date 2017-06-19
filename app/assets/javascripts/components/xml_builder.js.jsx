@@ -32,7 +32,7 @@ var XmlBuilder = React.createClass({
   render: function () {
     var formChangeHandler = this.formChangeHandler;
 
-      return (
+    return (
       <div className="container">
         <h2 className="text-center">XML Builder</h2>
 

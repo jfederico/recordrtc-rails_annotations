@@ -48,15 +48,15 @@ ContentItemBuilder.ContentItems.Row = React.createClass({
           <td><input ref="thumbnail" id="thumbnail" onChange={this.tableChangeHandler} defaultValue={this.props.thumbnail && this.props.thumbnail} type="text"></input></td>
           <td>
             <select ref="itemType" id="type" onChange={this.tableChangeHandler}>
-              {mediaTypes.map(function (value, index) {
-                return <option key={index} value={value}>{value === 'CC' ? 'File Item' : value}</option>
+              {mediaTypes.map(function (value) {
+                return <option key={value} value={value}>{value === 'CC' ? 'File Item' : value}</option>
               })};
             </select>
           </td>
           <td>
             <select ref="itemPresentTarget" id="presentationTarget" onChange={this.tableChangeHandler}>
-              {documentTargets.map(function (value, index) {
-                return <option key={index} value={value}>{value}</option>
+              {documentTargets.map(function (value) {
+                return <option key={value} value={value}>{value}</option>
               })};
             </select>
           </td>

@@ -119,6 +119,8 @@ $(document).ready ->
           startRecording()
 
           startStopBtn.removeClass('btn-outline').addClass 'btn-sm'
+          titleInput.parent().removeClass 'has-error'
+          descriptionInput.parent().removeClass 'has-error'
         else
           stopRecording()
 
@@ -190,12 +192,12 @@ $(document).ready ->
 
         # Make form data using user input from form
         formData = new FormData
-        formData.append 'upload[title]', titleInput.val()
-        formData.append 'upload[description]', descriptionInput.val()
-        formData.append 'upload[video]', blob, fileName
+        formData.append 'recording[title]', titleInput.val()
+        formData.append 'recording[description]', descriptionInput.val()
+        formData.append 'recording[video]', blob, fileName
 
         # Upload the form data
-        makeXMLHttpRequest Routes.api_uploads_path(), 'POST', formData
+        makeXMLHttpRequest Routes.api_recordings_path(), 'POST', formData
         return
 
       makeXMLHttpRequest = (url, method, data) ->
@@ -292,7 +294,7 @@ $(document).ready ->
       startStopBtn = $('button#start-stop')
       uploadForm = $('div#upload-form')
       titleInput = uploadForm.find 'input#title'
-      descriptionInput = uploadForm.find 'input#description'
+      descriptionInput = uploadForm.find 'textarea#description'
       uploadBtn = uploadForm.children 'button#upload'
       progressBtn = uploadBtn.ladda()
       modal = $('#updated-alert')
@@ -355,8 +357,8 @@ $(document).ready ->
       #//////////////////
 
       editForm = $('form')
-      titleInput = editForm.find 'input#upload_title'
-      descriptionInput = editForm.find 'input#upload_description'
+      titleInput = editForm.find 'input#recording_title'
+      descriptionInput = editForm.find 'textarea#recording_description'
       modal = $('#updated-alert')
       modalBtn = $('button#show-modal')
 

@@ -1,5 +1,5 @@
 # This migration comes from rails_lti2_provider (originally 20151203231519)
-class UpdateToolIdType < ActiveRecord::Migration[5.1]
+class UpdateToolIdType < ActiveRecord::Migration[5.0]
   def change
     if defined?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter) &&
         ActiveRecord::Base.connection.instance_of?(ActiveRecord::ConnectionAdapters::PostgreSQLAdapter)

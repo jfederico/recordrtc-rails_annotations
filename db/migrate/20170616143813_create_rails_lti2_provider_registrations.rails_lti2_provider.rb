@@ -1,5 +1,5 @@
 # This migration comes from rails_lti2_provider (originally 20141024195011)
-class CreateRailsLti2ProviderRegistrations < ActiveRecord::Migration[5.1]
+class CreateRailsLti2ProviderRegistrations < ActiveRecord::Migration[5.0]
   def change
     create_table :rails_lti2_provider_registrations do |t|
       t.string :uuid

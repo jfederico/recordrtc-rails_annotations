@@ -1,10 +1,10 @@
 code: default
 name:
-  default_value: Lti2Example
+  default_value: RecordRTC
   key: default.name
 
 description:
-  default_value: Lti 2 Example Launch
+  default_value: RecordRTC
   key: default.description
 
 messages:
@@ -12,7 +12,7 @@ messages:
     route:
       path: "/default"
       controller: "message"
-      action: "basic_lti_launch_request"
+      action: "recordrtc_launch_request"
 ### List of parameters ###
 #    parameters:
 #      - name: #the name of the parameter

@@ -6,13 +6,13 @@ class ToolProxyController < ApplicationController
     registration_service = IMS::LTI::Services::ToolProxyRegistrationService.new(registration_request)
     @tool_consumer_profile = registration_service.tool_consumer_profile
 
-    tool_service = registration_service.service_profiles
+    #tool_service = registration_service.service_profiles
     #filter out unwanted services
 
     security_contract = IMS::LTI::Models::SecurityContract.new(
       shared_secret: 'secret',
-    # tool_service: tool_service,
-    # end_user_service: [IMS::LTI::Models::RestServiceProfile.new]
+      #tool_service: tool_service,
+      #end_user_service: [IMS::LTI::Models::RestServiceProfile.new]
     )
 
     tool_proxy = IMS::LTI::Models::ToolProxy.new(
@@ -43,7 +43,6 @@ class ToolProxyController < ApplicationController
     message = IMS::LTI::Models::MessageHandler.new(
       message_type: 'basic-lti-launch-request',
       path: messages_blti_url,
-      # path: blti_launch_url,
       parameter: variable_parameters + fixed_parameters
     )
 

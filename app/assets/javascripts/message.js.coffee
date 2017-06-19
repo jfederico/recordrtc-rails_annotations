@@ -14,7 +14,7 @@ $(document).ready ->
       #//////////////////
 
       refresh = ->
-        $.ajax url: '/recordrtc/refresh_uploads'
+        $.ajax url: 'refresh_recordings'
         return
 
 
@@ -37,7 +37,7 @@ $(document).ready ->
         cancelButtonText: 'Cancel'
 
       # Customize DataTables table of all recordings on launch page
-      table = $('#uploads-table').dataTable(
+      table = $('#recordings-table').dataTable(
         'stateSave': true,
         'columnDefs': [
           {
@@ -54,9 +54,11 @@ $(document).ready ->
       #//////////////////
 
       # Hidden for now
-      # refreshBtn.onclick = refresh
+      # refreshBtn.click ->
+      #   refresh()
+      #   return
 
-      # Refresh _uploads partial on launch page every 5 seconds
+      # Refresh _recordings partial on launch page every 5 seconds
       setInterval ->
         refresh()
         return

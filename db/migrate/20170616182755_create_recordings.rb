@@ -1,6 +1,6 @@
-class CreateUploads < ActiveRecord::Migration[5.1]
+class CreateRecordings < ActiveRecord::Migration[5.0]
   def change
-    create_table :uploads do |t|
+    create_table :recordings do |t|
       t.string :title
       t.string :description
       t.text :video_data

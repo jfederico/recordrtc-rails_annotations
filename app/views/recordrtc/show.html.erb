@@ -3,25 +3,25 @@
 <% end %>
 
 <% content_for :panel_heading do %>
-  <strong><%= @upload.title %></strong>
+  <strong><%= @recording.title %></strong>
 <% end %>
 
 <div class="row">
   <div class="col-lg-6">
     <div class="embed-responsive embed-responsive-4by3">
-      <video src="<%= @upload.video.url %>" controls></video>
+      <video src="<%= @recording.video.url %>" controls></video>
     </div>
   </div>
 
   <div id="description-div" class="col-lg-6">
     <h5><strong>Description</strong></h5>
-    <p><%= @upload.description %></p>
+    <p><%= @recording.description %></p>
     <br />
-    <p><i class="fa fa-clock-o fa-fw"></i> Uploaded at <%= @upload.created_at.strftime("%H:%M, on %d/%m/%Y") %></p>
-    <p><i class="fa fa-pencil-square fa-fw"></i> Last edited at <%= @upload.updated_at.strftime("%H:%M, on %d/%m/%Y") %></p>
+    <p><i class="fa fa-clock-o fa-fw"></i> Uploaded at <%= @recording.created_at.strftime("%H:%M, on %d/%m/%Y") %></p>
+    <p><i class="fa fa-pencil-square fa-fw"></i> Last edited at <%= @recording.updated_at.strftime("%H:%M, on %d/%m/%Y") %></p>
     <!--
     <br />
-    <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, api_upload_path(@upload), class: 'btn btn-block btn-outline btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+    <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, api_recording_path(@recording), class: 'btn btn-block btn-outline btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
     -->
   </div>
 </div>

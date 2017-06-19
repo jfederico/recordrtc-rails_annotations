@@ -7,6 +7,7 @@ var ContentItemBuilder = React.createClass({
     ltiLaunchUrl: React.PropTypes.string,
     ltiUpdateUrl: React.PropTypes.string,
     textFileUrl: React.PropTypes.string,
+    videoUrl: React.PropTypes.string,
     ccFileUrl: React.PropTypes.string,
     documentTargets: React.PropTypes.array,
     mediaTypes: React.PropTypes.array
@@ -32,6 +33,7 @@ var ContentItemBuilder = React.createClass({
           ltiLaunchUrl={this.props.ltiLaunchUrl}
           ltiUpdateUrl={this.props.ltiUpdateUrl}
           textFileUrl={this.props.textFileUrl}
+          videoUrl={this.props.videoUrl}
           ccFileUrl={this.props.ccFileUrl}
           documentTargets={this.props.documentTargets}
           mediaTypes={this.props.mediaTypes}

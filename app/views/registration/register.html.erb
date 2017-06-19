@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Select the capabilities you want to use:</h3>
-    <button id="checkAll">Check All</button>
-    <button id="uncheckAll">Uncheck All</button>
+    <button id="check-all">Check All</button>
+    <button id="uncheck-all">Uncheck All</button>
   <form method="post" action="<%= save_capabilities_path %>">
     <input type="hidden" name="reg_id" value="<%= @registration.id %>"/>
 
@@ -28,7 +28,7 @@
       <% @services_offered.each do |service| %>
         <tr>
           <td class="text-center">
-            <label>
+            <label class="block-label">
               <input type="checkbox" value="true" name="service[<%= service[:name] %>][enabled]"/>
             </label>
           </td>
@@ -57,15 +57,15 @@
       <tbody>
       <% @capabilities[:parameters].each do |cap| %>
         <tr>
-          <td class="text-center diff-line-height">
-            <label>
+          <td class="text-center diff-line-h">
+            <label class="block-label">
               <input type="checkbox" value="true" name="variable_parameters[<%= cap %>][enabled]"/>
             </label>
           </td>
           <td>
             <input type="text" class="form-control" value="<%= cap.downcase.gsub('.', '_') %>" name="variable_parameters[<%= cap %>][name]"/>
           </td>
-          <td class="diff-line-height"><%= cap %></td>
+          <td class="diff-line-h"><%= cap %></td>
         </tr>
       <% end %>
       </tbody>
@@ -74,7 +74,7 @@
     <p><strong>What default Tool Settings do you want?</strong></p>
     <textarea name="tool_settings">{"default":42}</textarea>
 
-    <div id="submit-div">
+    <div id="submit-lti2-reg">
       <input type="submit" class="btn btn-primary" value="Submit">
     </div>
   </form>

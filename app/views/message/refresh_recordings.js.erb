@@ -1,0 +1,12 @@
+var obj = $('#recordings').html("<%= escape_javascript(render 'recordings').html_safe %>");
+
+obj.find('#recordings-table').dataTable({
+  'stateSave': true,
+  'columnDefs': [
+    {
+      'targets': 2,
+      'orderable': false,
+      'searchable': false
+    }
+  ]
+});

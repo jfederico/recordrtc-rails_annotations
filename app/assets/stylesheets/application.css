@@ -13,6 +13,7 @@
  *= require sweetalert2
  *= require ladda
  *= require guide
+ *= require launch
  *= require message
  *= require recordrtc
  *= require registration

@@ -13,15 +13,14 @@ $(document).ready ->
       # Setup
       #//////////////////
 
-      regUrlBox = $('input.form-control')
+      regUrl = $('input')
 
 
       #//////////////////
       # Event watchers
       #//////////////////
 
-      # Select text in URL box when it is clicked
-      regUrlBox.click ->
-        regUrlBox.select()
+      regUrl.click ->
+        regUrl.select()
         return
   return

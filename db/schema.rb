@@ -10,53 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616132638) do
+ActiveRecord::Schema.define(version: 20170616182755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "collaboration_callbacks", force: :cascade do |t|
-    t.string "request_method"
-    t.string "host"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "request_method"
+    t.string   "host"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rails_lti2_provider_lti_launches", force: :cascade do |t|
-    t.bigint "tool_id"
-    t.string "nonce"
-    t.text "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint   "tool_id"
+    t.string   "nonce"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rails_lti2_provider_registrations", force: :cascade do |t|
-    t.string "uuid"
-    t.text "registration_request_params"
-    t.text "tool_proxy_json"
-    t.string "workflow_state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "tool_id"
-    t.text "correlation_id"
-    t.index ["correlation_id"], name: "index_rails_lti2_provider_registrations_on_correlation_id", unique: true
+    t.string   "uuid"
+    t.text     "registration_request_params"
+    t.text     "tool_proxy_json"
+    t.string   "workflow_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.bigint   "tool_id"
+    t.text     "correlation_id"
+    t.index ["correlation_id"], name: "index_rails_lti2_provider_registrations_on_correlation_id", unique: true, using: :btree
   end
 
   create_table "rails_lti2_provider_tools", force: :cascade do |t|
-    t.string "uuid"
-    t.text "shared_secret"
-    t.text "tool_settings"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "lti_version"
+    t.string   "uuid"
+    t.text     "shared_secret"
+    t.text     "tool_settings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "lti_version"
   end
 
-  create_table "uploads", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.text "video_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "recordings", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.text     "video_data"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

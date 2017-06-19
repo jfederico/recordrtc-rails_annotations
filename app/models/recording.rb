@@ -1,4 +1,4 @@
-class Upload < ApplicationRecord
+class Recording < ApplicationRecord
   include VideoUploader[:video]
 
   validates_presence_of :title, :description, :video

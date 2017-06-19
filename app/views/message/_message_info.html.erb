@@ -1,5 +1,5 @@
 <% if @error.present? %>
-  <div id="error-div" class="error-or-unknown">
+  <div id="error-box" class="error-or-unknown">
     <h4><%= @error %></h4>
   </div>
 <% end %>
@@ -64,7 +64,7 @@
 
 <p>
 <h4>Oauth Base String</h4>
-<textarea id="oauth-box" readonly> <%= @header.send(:signature_base) %> </textarea>
+<textarea id="oauth-bs" readonly><%= @header.send(:signature_base) %></textarea>
 <h4>secret</h4>
-<textarea readonly> <%= @secret %> </textarea>
+<textarea readonly><%= @secret %></textarea>
 </p>

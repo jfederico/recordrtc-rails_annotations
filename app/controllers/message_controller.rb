@@ -2,7 +2,7 @@ class MessageController < ApplicationController
   include RailsLti2Provider::ControllerHelpers
 
   skip_before_action :verify_authenticity_token
-  before_action :lti_authentication, except: [:signed_content_item_request, :refresh_uploads]
+  before_action :lti_authentication, except: [:youtube, :signed_content_item_request, :refresh_recordings]
 
   rescue_from RailsLti2Provider::LtiLaunch::Unauthorized do |ex|
     @error = 'Authentication failed with: ' + case ex.error
@@ -22,7 +22,7 @@ class MessageController < ApplicationController
 
   def basic_lti_launch_request
     @disable_nav = true
-    
+
     process_message
   end
 
@@ -44,8 +44,12 @@ class MessageController < ApplicationController
     render 'message/signed_content_item_form'
   end
 
-  def refresh_uploads
-    @uploads = Upload.order('id DESC')
+  def youtube
+    redirect_to params[:youtube_url]
+  end
+
+  def refresh_recordings
+    @recordings = Recording.all
 
     respond_to do |format|
       format.js
@@ -53,7 +57,6 @@ class MessageController < ApplicationController
   end
 
   private
-
   def process_message
     @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"
     #TODO: should we create the lti_launch with all of the oauth params as well?
@@ -62,7 +65,7 @@ class MessageController < ApplicationController
   end
 
   def process_message_recordrtc
-    @uploads = Upload.order('id DESC')
+    @recordings = Recording.all
 
     @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"
     #TODO: should we create the lti_launch with all of the oauth params as well?

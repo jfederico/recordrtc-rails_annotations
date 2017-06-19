@@ -1,5 +1,5 @@
 # This migration comes from rails_lti2_provider (originally 20150402153006)
-class AddVersionAndRenameToolProxyModel < ActiveRecord::Migration[5.1]
+class AddVersionAndRenameToolProxyModel < ActiveRecord::Migration[5.0]
   def change
     rename_table :rails_lti2_provider_tool_proxies, :rails_lti2_provider_tools
     add_column :rails_lti2_provider_tools, :lti_version, :string

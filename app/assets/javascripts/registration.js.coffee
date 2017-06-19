@@ -13,12 +13,12 @@ $(document).ready ->
       # Helper functions
       #//////////////////
 
-      selectAll ->
-        $('input:checkbox').prop 'checked', true
+      checkAll = ->
+        checkboxes.prop('checked', true)
         return
 
-      unselectAll ->
-        $('input:checkbox').prop 'checked', false
+      uncheckAll = ->
+        checkboxes.prop('checked', false)
         return
 
 
@@ -26,19 +26,20 @@ $(document).ready ->
       # Setup
       #//////////////////
 
-      checkAllBtn = $('button#checkAll')
-      uncheckAllBtn = $('button#uncheckAll')
+      checkboxes = $('input:checkbox')
+      checkAllBtn = $('button#check-all')
+      uncheckAllBtn = $('button#uncheck-all')
 
 
       #//////////////////
       # Event watchers
       #//////////////////
 
-      # Check/uncheck all checkboxes in form
       checkAllBtn.click ->
-        selectAll()
+        checkAll()
         return
+
       uncheckAllBtn.click ->
-        unselectAll()
+        uncheckAll()
         return
   return

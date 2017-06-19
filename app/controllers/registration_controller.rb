@@ -15,6 +15,7 @@ class RegistrationController < ApplicationController
         IMS::LTI::Models::Messages::BasicLTILaunchRequest::MESSAGE_TYPE,
         IMS::LTI::Models::Messages::ToolProxyReregistrationRequest::MESSAGE_TYPE
     ]
+
     tcp = @registration.tool_consumer_profile
     @capabilities = tcp.capability_offered.each_with_object({placements: [], parameters: []}) do |cap, hash|
       unless filter_out.include? cap
@@ -25,14 +26,15 @@ class RegistrationController < ApplicationController
         end
       end
     end
+
     tcp_url = tcp.id || @registration.registration_request.tc_profile_url
     @services_offered = tcp.services_offered.each_with_object([]) do |service, col|
       unless service.id.include? 'ToolProxy.collection'
         name = service.id.split(':').last.split('#').last
         col << {
-            name: name,
-            service: "#{tcp_url}##{name}",
-            actions: service.actions
+          name: name,
+          service: "#{tcp_url}##{name}",
+          actions: service.actions
         }
       end
     end
@@ -72,9 +74,9 @@ class RegistrationController < ApplicationController
       redirect_to_consumer(register_proxy(registration))
     rescue IMS::LTI::Errors::ToolProxyRegistrationError => e
       @error = {
-          tool_proxy_guid: registration.tool_proxy.tool_proxy_guid,
-          response_status: e.response_status,
-          response_body: e.response_body
+        tool_proxy_guid: registration.tool_proxy.tool_proxy_guid,
+        response_status: e.response_status,
+        response_body: e.response_body
       }
     end
   end
@@ -83,15 +85,14 @@ class RegistrationController < ApplicationController
   def add_reregistration_handler!(registration, tool_profile)
     if (registration.tool_consumer_profile.capability_offered.include?(IMS::LTI::Models::Messages::ToolProxyReregistrationRequest::MESSAGE_TYPE))
       rereg_mh = IMS::LTI::Models::MessageHandler.new(
-          message_type: IMS::LTI::Models::Messages::ToolProxyReregistrationRequest::MESSAGE_TYPE,
-          path: tool_reregistration_path
+        message_type: IMS::LTI::Models::Messages::ToolProxyReregistrationRequest::MESSAGE_TYPE,
+        path: tool_reregistration_path
       )
       tool_profile.message = [rereg_mh]
     end
   end
 
   protected
-
   def reregistration?
     params[:lti_message_type] ==  IMS::LTI::Models::Messages::ToolProxyReregistrationRequest::MESSAGE_TYPE
   end

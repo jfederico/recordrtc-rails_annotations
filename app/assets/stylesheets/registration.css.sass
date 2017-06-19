@@ -1,40 +1,123 @@
 // Color variables
-$table-condensed-bg-color: #fff
-$submit-div-top-border-color: #ddd
+$body-bg-color: #eee
+$table-bg-color: #fff
+$table-header-bg-color: #595959
+$table-header-text-color: #fff
+$add-icon-text-color: #00b500
+$remove-icon-text-color: #f00
+$love-icon-text-color: #ff69b4
+$lti2-reg-btn-border-color: #ddd
 
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// CSS for CONTROLLER: registration, global
+// CSS for CONTROLLER: registration, ACTION: register
 ////////////////////////////////////////////////////////////////////////////////
 
 body
   &.registration
-    ////////////////////////////////////////////////////////////////////////////
-    // CSS for CONTROLLER: message, ACTION: register
-    ////////////////////////////////////////////////////////////////////////////
     &.register
+      background-color: $body-bg-color
+      padding: 0 50px 20px
+
+      .form-signin
+        margin: 40px auto
+        max-width: 430px
+        padding: 15px
+
+        .form-signin-heading
+          margin-bottom: 10px
+
+        .checkbox
+          font-weight: normal
+          margin-bottom: 10px
+
+        .form-control
+          box-sizing: border-box
+          font-size: 16px
+          height: auto
+          padding: 10px
+          position: relative
+
+          &:focus
+            z-index: 2
+
+        input
+          &[type='email']
+            border-bottom-left-radius: 0
+            border-bottom-right-radius: 0
+            margin-bottom: -1px
+
+          &[type='password']
+            border-top-left-radius: 0
+            border-top-right-radius: 0
+            margin-bottom: 10px
+
       table
-        &.table
-          &.table-condensed
-            background-color: $table-condensed-bg-color
+        background: $table-bg-color
 
-            label
-              display: block
+        thead
+          th
+            background-color: $table-header-bg-color
+            color: $table-header-text-color
+            padding: 2px 4px
 
-            td
-              .diff-line-height
-                line-height: 2.2
+        td
+          max-width: 500px
+          padding: 5px
+          word-wrap: break-word
 
-      div
-        #submit-div
-          border-top: 1px solid $submit-div-top-border-color
-          margin-top: 15px
-          padding-top: 15px
+      .checkbox-col
+        width: 5em
 
-    ////////////////////////////////////////////////////////////////////////////
-    // CSS for CONTROLLER: message, ACTION: submit_proxy
-    ////////////////////////////////////////////////////////////////////////////
+      .add-remove-col
+        width: 3em
+
+      .add-icon
+        color: $add-icon-text-color
+
+      .remove-icon
+        color: $remove-icon-text-color
+
+      .love-icon
+        color: $love-icon-text-color
+
+      code
+        .xml
+          font-size: 10px
+
+      @media only screen and (min-width: 992px)
+        code
+          .xml
+            font-size: 10px
+
+      @media only screen and (min-width: 768px)
+        code
+          .xml
+            font-size: 9px
+
+      .table
+        background-color: $table-bg-color
+
+      .diff-line-h
+        line-height: 2.2
+
+      .block-label
+        display: block
+
+      #submit-lti2-reg
+        border-top: 1px solid $lti2-reg-btn-border-color
+        margin-top: 15px
+        padding-top: 15px
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// CSS for CONTROLLER: registration, ACTION: submit_proxy
+////////////////////////////////////////////////////////////////////////////////
+
+body
+  &.registration
     &.submit_proxy
       span
         font-weight: bold

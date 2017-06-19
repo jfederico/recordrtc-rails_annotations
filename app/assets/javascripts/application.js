@@ -23,8 +23,11 @@
 //= require lodash
 //= require react
 //= require react_ujs
-//= require components
-//= require bowser
-//= require adapter
 //= require js-routes
-//= require_tree .
+//= require adapter
+//= require bowser
+//= require components
+//= require guide
+//= require message
+//= require recordrtc
+//= require registration
