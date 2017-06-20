@@ -52,6 +52,21 @@ $(document).on 'turbolinks:load', ->
         true
 
 
+    #//////////////////
+    # Setup
+    #//////////////////
+
+    # Customize SweetAlert2 dialog
+    window.sweetAlertConfirmConfig =
+      title: 'Are you sure?'
+      text: 'You will not be able to recover this recording!'
+      type: 'warning'
+      showCancelButton: true
+      confirmButtonColor: '#DD6B55'
+      confirmButtonText: 'Delete'
+      cancelButtonText: 'Cancel'
+
+
 
     #///////////////////////////////////////////////////////////////////////////
     # JavaScript for CONTROLLER: recordrtc, ACTION: index
@@ -73,18 +88,6 @@ $(document).on 'turbolinks:load', ->
 
       closeCompatibilityAlert = $('#close-alert')
       deleteBtn = $('a.delete-btn')
-      # Hidden for now
-      # refreshBtn = $('button#refresh')
-
-      # Customize SweetAlert2 dialog
-      window.sweetAlertConfirmConfig =
-        title: 'Are you sure?'
-        text: 'You will not be able to recover this recording!'
-        type: 'warning'
-        showCancelButton: true
-        confirmButtonColor: '#DD6B55'
-        confirmButtonText: 'Delete'
-        cancelButtonText: 'Cancel'
 
       # Customize DataTables table of all recordings on launch page
       table = $('#recordings-table').dataTable(
@@ -438,13 +441,16 @@ $(document).on 'turbolinks:load', ->
       # Setup
       #//////////////////
 
-      # Configure SweetAlert2 popup
-      window.sweetAlertConfirmConfig =
-        title: 'Are you sure?'
-        text: 'You will not be able to recover this recording!'
-        type: 'warning'
-        showCancelButton: true
-        confirmButtonColor: '#DD6B55'
-        confirmButtonText: 'Delete'
-        cancelButtonText: 'Cancel'
+      deleteBtn = $('a#delete-btn')
+      goBack = $('a#back')
+
+
+      #//////////////////
+      # Event watchers
+      #//////////////////
+
+      # Open success modal on succesful form submission
+      deleteBtn.on 'ajax:success', ->
+        goBack[0].click()
+        return
   return

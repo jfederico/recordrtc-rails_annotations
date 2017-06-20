@@ -19,10 +19,10 @@
     <br />
     <p><i class="fa fa-clock-o fa-fw"></i> Uploaded at <%= @recording.created_at.strftime("%H:%M, on %d/%m/%Y") %></p>
     <p><i class="fa fa-pencil-square fa-fw"></i> Last edited at <%= @recording.updated_at.strftime("%H:%M, on %d/%m/%Y") %></p>
-    <!--
+
     <br />
-    <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, api_recording_path(@recording), class: 'btn btn-block btn-outline btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
-    -->
+
+    <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, api_recording_path(@recording), id: 'delete-btn', class: 'btn btn-block btn-outline btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
   </div>
 </div>
 
