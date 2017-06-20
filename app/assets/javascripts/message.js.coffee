@@ -24,7 +24,7 @@ $(document).ready ->
 
       closeCompatibilityAlert = $('#close-alert')
       # Hidden for now
-      # refreshBtn = document.querySelector('button#refresh')
+      # refreshBtn = $('button#refresh')
 
       # Customize SweetAlert2 dialog
       window.sweetAlertConfirmConfig =
@@ -58,12 +58,6 @@ $(document).ready ->
       #   refresh()
       #   return
 
-      # Refresh _recordings partial on launch page every 5 seconds
-      setInterval ->
-        refresh()
-        return
-      , 5000
-
 
       #//////////////////
       # Main logic
@@ -74,6 +68,12 @@ $(document).ready ->
          bowser.chrome and bowser.version >= 49 or
          bowser.opera and bowser.version >= 36
         closeCompatibilityAlert.click()
+
+      # Refresh recordings partial on launch page every 5 seconds
+      setInterval ->
+        refresh()
+        return
+      , 5000
 
 
 

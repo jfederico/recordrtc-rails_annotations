@@ -20,6 +20,7 @@ $(document).ready ->
       # Event watchers
       #//////////////////
 
+      # Select contents of field when clicked
       regUrl.click ->
         regUrl.select()
         return

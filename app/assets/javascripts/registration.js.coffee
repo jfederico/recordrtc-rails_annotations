@@ -35,10 +35,12 @@ $(document).ready ->
       # Event watchers
       #//////////////////
 
+      # Select all checkboxes when clicked
       checkAllBtn.click ->
         checkAll()
         return
 
+      # Deselect all checkboxes when clicked
       uncheckAllBtn.click ->
         uncheckAll()
         return

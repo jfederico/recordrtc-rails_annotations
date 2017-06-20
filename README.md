@@ -18,7 +18,6 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 
 ### TO-DO
 
-* Remove useless CSS from specific pages
 * Rename and organize controllers and routes
 * Consider using OAuth2 gem instead of simple_oauth; check to see what is required to move over
 * Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)

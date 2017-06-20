@@ -11,7 +11,7 @@ $(document).ready ->
     # Helper functions
     #//////////////////
 
-    # Check to see if title and description are not empty
+    # Check to see if title and description are not empty, and display alert if so
     validate = ->
       if titleInput.val() is '' and descriptionInput.val() is ''
         titleInput.parent().addClass 'has-error'
@@ -118,13 +118,13 @@ $(document).ready ->
         if startStopBtn.html() is '<i class="fa fa-circle"></i> Start Recording' or startStopBtn.html() is '<i class="fa fa-circle"></i> Record Again'
           startRecording()
 
-          startStopBtn.removeClass('btn-outline').addClass 'btn-sm'
+          startStopBtn.removeClass 'btn-outline'
           titleInput.parent().removeClass 'has-error'
           descriptionInput.parent().removeClass 'has-error'
         else
           stopRecording()
 
-          startStopBtn.removeClass('btn-sm').addClass 'btn-outline'
+          startStopBtn.addClass 'btn-outline'
           startStopBtn.html '<i class="fa fa-circle"></i> Record Again'
         return
 
@@ -149,7 +149,7 @@ $(document).ready ->
         console.log 'Created MediaRecorder', mediaRecorder
 
         # Begin recording countdown timer
-        startStopBtn.html '<i class="fa fa-stop-circle"></i> Stop Recording (<label id="minutes">02</label>:<label id="seconds">00</label>)'
+        startStopBtn.html '<i class="fa fa-stop-circle"></i> Stop Recording (<span id="minutes">02</span>:<span id="seconds">00</span>)'
         `countdownSeconds = 120`
         `countdownTicker = setInterval(function () {
           setTime();
@@ -263,10 +263,10 @@ $(document).ready ->
       setTime = ->
         countdownSeconds--
 
-        startStopBtn.children('label#seconds').html pad(countdownSeconds % 60)
-        startStopBtn.children('label#minutes').html pad(parseInt(countdownSeconds / 60))
+        startStopBtn.children('span#seconds').html pad(countdownSeconds % 60)
+        startStopBtn.children('span#minutes').html pad(parseInt(countdownSeconds / 60))
 
-        if `countdownSeconds == 0`
+        if countdownSeconds is 0
           startStopBtn.click()
         return
 
