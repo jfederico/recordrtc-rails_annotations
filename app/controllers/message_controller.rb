@@ -48,14 +48,6 @@ class MessageController < ApplicationController
     redirect_to params[:youtube_url]
   end
 
-  def refresh_recordings
-    @recordings = Recording.all
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
   def process_message
     @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"
@@ -65,11 +57,19 @@ class MessageController < ApplicationController
   end
 
   def process_message_recordrtc
-    @recordings = Recording.all
-
     @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"
     #TODO: should we create the lti_launch with all of the oauth params as well?
     @message = (@lti_launch && @lti_launch.message) || IMS::LTI::Models::Messages::Message.generate(request.request_parameters)
     @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
+
+    if @message.lti_version == 'LTI-2p0'
+      session[:user_id] = @message.custom_user_id
+      session[:full_name] = @message.custom_person_name_full
+    elsif @message.lti_version == 'LTI-1p0'
+      session[:user_id] = @message.user_id
+      session[:full_name] = @message.lis_person_name_full
+    end
+
+    redirect_to recordrtc_index_path
   end
 end

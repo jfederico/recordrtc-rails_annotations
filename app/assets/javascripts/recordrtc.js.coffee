@@ -75,6 +75,79 @@ $(document).ready ->
 
 
     #///////////////////////////////////////////////////////////////////////////
+    # JavaScript for CONTROLLER: recordrtc, ACTION: index
+    #///////////////////////////////////////////////////////////////////////////
+
+    if $('body').hasClass 'index'
+      #//////////////////
+      # Helper functions
+      #//////////////////
+
+      refresh = ->
+        $.ajax url: 'refresh_recordings'
+        return
+
+
+      #//////////////////
+      # Setup
+      #//////////////////
+
+      closeCompatibilityAlert = $('#close-alert')
+      # Hidden for now
+      # refreshBtn = $('button#refresh')
+
+      # Customize SweetAlert2 dialog
+      window.sweetAlertConfirmConfig =
+        title: 'Are you sure?'
+        text: 'You will not be able to recover this recording!'
+        type: 'warning'
+        showCancelButton: true
+        confirmButtonColor: '#DD6B55'
+        confirmButtonText: 'Delete'
+        cancelButtonText: 'Cancel'
+
+      # Customize DataTables table of all recordings on launch page
+      table = $('#recordings-table').dataTable(
+        'stateSave': true,
+        'columnDefs': [
+          {
+            'targets': 2
+            'orderable': false
+            'searchable': false
+          }
+        ]
+      )
+
+
+      #//////////////////
+      # Event watchers
+      #//////////////////
+
+      # Hidden for now
+      # refreshBtn.click ->
+      #   refresh()
+      #   return
+
+
+      #//////////////////
+      # Main logic
+      #//////////////////
+
+      # Auto-close browser compatibility alert if browser is well-supported
+      if bowser.firefox and bowser.version >= 29 or
+         bowser.chrome and bowser.version >= 49 or
+         bowser.opera and bowser.version >= 36
+        closeCompatibilityAlert.click()
+
+      # Refresh recordings partial on launch page every 5 seconds
+      setInterval ->
+        refresh()
+        return
+      , 5000
+
+
+
+    #///////////////////////////////////////////////////////////////////////////
     # JavaScript for CONTROLLER: recordrtc, ACTION: new
     #///////////////////////////////////////////////////////////////////////////
 
@@ -195,6 +268,7 @@ $(document).ready ->
         formData.append 'recording[title]', titleInput.val()
         formData.append 'recording[description]', descriptionInput.val()
         formData.append 'recording[video]', blob, fileName
+        formData.append 'recording[account_id]', accountInput.val()
 
         # Upload the form data
         makeXMLHttpRequest Routes.api_recordings_path(), 'POST', formData
@@ -295,6 +369,7 @@ $(document).ready ->
       uploadForm = $('div#upload-form')
       titleInput = uploadForm.find 'input#title'
       descriptionInput = uploadForm.find 'textarea#description'
+      accountInput = uploadForm.children 'input#account_id'
       uploadBtn = uploadForm.children 'button#upload'
       progressBtn = uploadBtn.ladda()
       modal = $('#updated-alert')

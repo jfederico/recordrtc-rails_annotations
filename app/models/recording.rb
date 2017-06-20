@@ -1,6 +1,8 @@
 class Recording < ApplicationRecord
   include VideoUploader[:video]
 
+  belongs_to :account
+
   validates_presence_of :title, :description, :video
 
   # Make route URLs more obfuscated

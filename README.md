@@ -7,8 +7,10 @@ This is the open-source version of the app!
 
 Ruby 2.4.0 + Rails 5.1.1 (+ FFMPEG for recording thumbnails).  
 Use `bundle install` to install all required dependencies.  
-Run `cp sample.env .env` and change the values in the file to suit your environment.  
-Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_token.rb` and place your generated secret key (follow instructions in file) in `secret_key_base`.
+Run `cp sample.env .env` and change the database values in the file to suit your environment.  
+Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`.  
+Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.  
+Start app with `rails s`!
 
 ### KNOWN BUGS
 
@@ -18,9 +20,10 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 
 ### TO-DO
 
+* Add user (re)authentication where needed
+* Authenticate CSRF token before accessing API
 * Rename and organize controllers and routes
 * Consider using OAuth2 gem instead of simple_oauth; check to see what is required to move over
-* Separate recordings per user (ask Jesus how to use LTI data to separate user object ownership). Also separate recordrtc controller views per user (ex.: user 1 has recordings id 1, 2 and 3, and user 2 has separate recordings id 1, 2, 3 and 4. Neither can access each others' edit or show pages)
 * Examine security of certain routes opened up by js-routes
 * OPTIONAL: Add video thumbnails to home page
 * OPTIONAL: Integrate Shrine's URL storage for cache
@@ -35,7 +38,5 @@ Run `cp config/initializers/sample.secret_token.rb config/initializers/secret_to
 * As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
 * DataTables is causing column-resizing troubles. For now, the too-large "Actions" column is not such a big deal
 * Gaffe integration is all default, can customize more later for regular path errors and API errors
-
-### TRY
-
-Checking for @message instead of @message.lti_version == 'LTI-2p0'
+* Session variables are a bit iffy right now; who knows what will happen when the same person has two open instances of the tool! Shouldn't be too much of a problem as the only things I am storing in the session are unchanging.
+* Right now, uses user_id LTI parameter to associate with accounts, but should be using person_sourcedid; however, for some reason, person_sourcedid does not exist for every LMS user

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :tool_proxy, only: [:create]
 
   post 'messages/blti', to: 'message#basic_lti_launch_request', as: 'blti_launch'
+  get 'recordrtc', to: 'recordrtc#index', as: 'recordrtc_index'
   post 'recordrtc', to: 'message#recordrtc_launch_request', as: 'recordrtc_launch'
   post 'messages/content-item', to: 'message#content_item_selection', as: 'content_item_request_launch'
   post 'messages/content-item', to: 'message#basic_lti_launch_request', as: 'content_item_launch'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     resources :recordings, except: [:new, :edit]
   end
 
-  resources :recordrtc, only: [:show, :new, :edit]
+  resources :recordrtc, only: [:index, :show, :new, :edit]
 
-  get 'refresh_recordings', to: 'message#refresh_recordings'
+  get 'refresh_recordings', to: 'recordrtc#refresh_recordings'
 end
