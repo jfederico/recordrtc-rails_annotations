@@ -33,9 +33,6 @@ Start app with `rails s`!
 
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
 * Cannot separate concerns for React files
-* Is it really a good idea to constantly be sending AJAX requests? Not very scalable, messes with search box (solution: find way to refresh page without resetting session)
-  * Issue with reloading LTI launch page is due to there being no GET route to /recordrtc. Need to find way to implement, how to keep LTI launch parameters?
-* As of yet, have not found a way to close show view after deleting recording, so the link is commented out for now
 * DataTables is causing column-resizing troubles. For now, the too-large "Actions" column is not such a big deal
 * Gaffe integration is all default, can customize more later for regular path errors and API errors
 * Session variables are a bit iffy right now; who knows what will happen when the same person has two open instances of the tool! Shouldn't be too much of a problem as the only things I am storing in the session are unchanging.

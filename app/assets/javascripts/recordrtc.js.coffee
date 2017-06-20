@@ -1,7 +1,7 @@
 'use strict'
 
 # Only start executing once DOM has loaded
-$(document).ready ->
+$(document).on 'turbolinks:load', ->
   #/////////////////////////////////////////////////////////////////////////////
   # JavaScript for CONTROLLER: recordrtc, global
   #/////////////////////////////////////////////////////////////////////////////
@@ -51,27 +51,6 @@ $(document).ready ->
         descriptionInput.parent().removeClass('has-error').addClass 'has-success'
         true
 
-    exit = ->
-      window.close()
-      return
-
-
-    #//////////////////
-    # Setup
-    #//////////////////
-
-    closePage = $('a#back')
-
-
-    #//////////////////
-    # Event watchers
-    #//////////////////
-
-    # Close this tab when 'Close' link is closed
-    closePage.click ->
-      exit()
-      return
-
 
 
     #///////////////////////////////////////////////////////////////////////////
@@ -93,6 +72,7 @@ $(document).ready ->
       #//////////////////
 
       closeCompatibilityAlert = $('#close-alert')
+      deleteBtn = $('a.delete-btn')
       # Hidden for now
       # refreshBtn = $('button#refresh')
 
@@ -120,16 +100,6 @@ $(document).ready ->
 
 
       #//////////////////
-      # Event watchers
-      #//////////////////
-
-      # Hidden for now
-      # refreshBtn.click ->
-      #   refresh()
-      #   return
-
-
-      #//////////////////
       # Main logic
       #//////////////////
 
@@ -139,11 +109,10 @@ $(document).ready ->
          bowser.opera and bowser.version >= 36
         closeCompatibilityAlert.click()
 
-      # Refresh recordings partial on launch page every 5 seconds
-      setInterval ->
+      # Refresh recordings partial when delete button is clicked
+      deleteBtn.on 'ajax:success', ->
         refresh()
         return
-      , 5000
 
 
 
@@ -372,6 +341,7 @@ $(document).ready ->
       accountInput = uploadForm.children 'input#account_id'
       uploadBtn = uploadForm.children 'button#upload'
       progressBtn = uploadBtn.ladda()
+      goBack = $('a#back')
       modal = $('#updated-alert')
       modalBtn = $('button#show-modal')
 
@@ -406,7 +376,7 @@ $(document).ready ->
 
       # Close tab when success modal is closed
       modal.on 'hidden.bs.modal', ->
-        closePage.click()
+        goBack[0].click()
         return
 
 
@@ -434,6 +404,7 @@ $(document).ready ->
       editForm = $('form')
       titleInput = editForm.find 'input#recording_title'
       descriptionInput = editForm.find 'textarea#recording_description'
+      goBack = $('a#back')
       modal = $('#updated-alert')
       modalBtn = $('button#show-modal')
 
@@ -453,7 +424,7 @@ $(document).ready ->
 
       # Close tab when success modal is closed
       modal.on 'hidden.bs.modal', ->
-        closePage.click()
+        goBack[0].click()
         return
 
 
