@@ -88,6 +88,11 @@ $(document).on 'turbolinks:load', ->
 
       closeCompatibilityAlert = $('#close-alert')
       deleteBtn = $('a.delete-btn')
+      closeTool = $('a#close')
+
+      browserSupported = bowser.firefox and bowser.version >= 29 or
+                         bowser.chrome and bowser.version >= 49 or
+                         bowser.opera and bowser.version >= 36
 
       # Customize DataTables table of all recordings on launch page
       table = $('#recordings-table').dataTable(
@@ -103,19 +108,27 @@ $(document).on 'turbolinks:load', ->
 
 
       #//////////////////
-      # Main logic
+      # Event watchers
       #//////////////////
-
-      # Auto-close browser compatibility alert if browser is well-supported
-      if bowser.firefox and bowser.version >= 29 or
-         bowser.chrome and bowser.version >= 49 or
-         bowser.opera and bowser.version >= 36
-        closeCompatibilityAlert.click()
 
       # Refresh recordings partial when delete button is clicked
       deleteBtn.on 'ajax:success', ->
         refresh()
         return
+
+      # Close LTI tool tab
+      closeTool.click ->
+        window.close()
+        return
+
+
+      #//////////////////
+      # Main logic
+      #//////////////////
+
+      # Auto-close browser compatibility alert if browser is well-supported
+      if browserSupported
+        closeCompatibilityAlert.click()
 
 
 

@@ -14,7 +14,6 @@ Start app with `rails s`!
 
 ### KNOWN BUGS
 
-* CoffeeScript for registration controller doesn't work, as the registration view is wrapped in the LMS's HTML and doesn't have its own controller/action-identified body tag
 * App doesn't work in a iFrame because X-Frame-Options only allows iFrames of same domain origin (maybe after_action :disable_xframe_header?)
 * Gaffe error pages might not work with people who haven't POSTed an LTI launch as it does not skip the authentication token verification
 
