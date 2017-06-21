@@ -20,8 +20,8 @@ Start app with `rails s`!
 ### TO-DO
 
 * Add user (re)authentication where needed
+* Change `config/initializers/cors.rb` to not allow every single host
 * Authenticate CSRF token before accessing API
-* Rename and organize controllers and routes
 * Consider using OAuth2 gem instead of simple_oauth; check to see what is required to move over
 * OPTIONAL: Add video thumbnails to home page
 * OPTIONAL: Integrate Shrine's URL storage for cache
