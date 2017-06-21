@@ -5,7 +5,6 @@ This is the open-source version of the app!
 
 
 
-Ruby 2.4.0 + Rails 5.1.1 (+ FFMPEG for recording thumbnails).  
 Use `bundle install` to install all required dependencies.  
 Run `cp sample.env .env` and change the database values in the file to suit your environment.  
 Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`.  
