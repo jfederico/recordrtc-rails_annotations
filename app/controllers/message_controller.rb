@@ -63,10 +63,10 @@ class MessageController < ApplicationController
     @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
 
     if @message.lti_version == 'LTI-2p0'
-      session[:user_id] = @message.custom_user_id
+      session[:user_id] = @message.custom_person_sourcedid
       session[:full_name] = @message.custom_person_name_full
     elsif @message.lti_version == 'LTI-1p0'
-      session[:user_id] = @message.user_id
+      session[:user_id] = @message.lis_person_sourcedid
       session[:full_name] = @message.lis_person_name_full
     end
 
