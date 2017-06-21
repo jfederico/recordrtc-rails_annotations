@@ -31,8 +31,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'rack-cors', '~> 0.4.0'
 # Use will_paginate to paginate API requests (20 entries per "page", for example)
 gem 'will_paginate', '~> 3.1.0'
-# Use JS-Routes to use Rails URL helpers in JS in the asset pipeline
-gem 'js-routes', '~> 1.3.0'
 # Use Gaffe to easily add custom error pages to the app
 gem 'gaffe', '~> 1.2.0'
 

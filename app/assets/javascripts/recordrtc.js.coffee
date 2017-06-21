@@ -256,7 +256,7 @@ $(document).on 'turbolinks:load', ->
         formData.append 'recording[account_id]', accountInput.val()
 
         # Upload the form data
-        makeXMLHttpRequest Routes.api_recordings_path(), 'POST', formData
+        makeXMLHttpRequest '/api/recordings', 'POST', formData
         return
 
       makeXMLHttpRequest = (url, method, data) ->
