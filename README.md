@@ -33,7 +33,6 @@ Start app with `rails s`!
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
 * Cannot separate concerns for React files
 * DataTables is causing column-resizing troubles. For now, the too-large "Actions" column is not such a big deal
-* Gaffe integration is all default, can customize more later for regular path errors and API errors
 * Session variables are a bit iffy right now; who knows what will happen when the same person has two open instances of the tool! Shouldn't be too much of a problem as the only things I am storing in the session are unchanging.
 * Right now, uses user_id LTI parameter to associate with accounts, but should be using person_sourcedid; however, for some reason, person_sourcedid does not exist for every LMS user
 * API is using session to get account_id and present only videos belonging to that user, which violates the statelessness of it; consider switching to JWT instead of sessions
