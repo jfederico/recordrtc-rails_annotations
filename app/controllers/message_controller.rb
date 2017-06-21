@@ -63,11 +63,11 @@ class MessageController < ApplicationController
     @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
 
     if @message.lti_version == 'LTI-2p0'
-      session[:user_id] = @message.custom_person_sourcedid
-      session[:full_name] = @message.custom_person_name_full
+      session[:user_id] = @message.custom_person_sourcedid || @message.user_id
+      session[:full_name] = @message.custom_person_name_full || 'Student'
     elsif @message.lti_version == 'LTI-1p0'
-      session[:user_id] = @message.lis_person_sourcedid
-      session[:full_name] = @message.lis_person_name_full
+      session[:user_id] = @message.lis_person_sourcedid || @message.user_id
+      session[:full_name] = @message.lis_person_name_full || 'Student'
     end
 
     redirect_to recordrtc_index_path
