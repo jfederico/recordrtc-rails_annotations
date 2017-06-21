@@ -16,6 +16,7 @@ Start app with `rails s`!
 
 * App doesn't work in a iFrame because X-Frame-Options only allows iFrames of same domain origin (maybe after_action :disable_xframe_header?)
 * Gaffe error pages might not work with people who haven't POSTed an LTI launch as it does not skip the authentication token verification
+* js-routes initializer isn't working (all routes are open for now, the regexes aren't matching properly)
 
 ### TO-DO
 
@@ -23,7 +24,6 @@ Start app with `rails s`!
 * Authenticate CSRF token before accessing API
 * Rename and organize controllers and routes
 * Consider using OAuth2 gem instead of simple_oauth; check to see what is required to move over
-* Examine security of certain routes opened up by js-routes
 * OPTIONAL: Add video thumbnails to home page
 * OPTIONAL: Integrate Shrine's URL storage for cache
 * TBD: Add support for audio recording (if determined to be needed)
