@@ -15,7 +15,6 @@ Start app with `rails s`!
 ### KNOWN BUGS
 
 * App doesn't work in a iFrame because X-Frame-Options only allows iFrames of same domain origin (maybe after_action :disable_xframe_header?)
-* Gaffe error pages might not work with people who haven't POSTed an LTI launch as it does not skip the authentication token verification
 * js-routes initializer isn't working (all routes are open for now, the regexes aren't matching properly)
 
 ### TO-DO
