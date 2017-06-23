@@ -2,7 +2,7 @@ class MessageController < ApplicationController
   include RailsLti2Provider::ControllerHelpers
 
   skip_before_action :verify_authenticity_token
-  before_action :lti_authentication, except: [:youtube, :signed_content_item_request, :refresh_recordings]
+  before_action :lti_authentication, except: [:youtube, :signed_content_item_request]
 
   rescue_from RailsLti2Provider::LtiLaunch::Unauthorized do |ex|
     @error = 'Authentication failed with: ' + case ex.error
