@@ -10,7 +10,7 @@ class ToolProxyController < ApplicationController
     #filter out unwanted services
 
     security_contract = IMS::LTI::Models::SecurityContract.new(
-      shared_secret: 'secret',
+      shared_secret: ENV['LTI_SECRET'],
       #tool_service: tool_service,
       #end_user_service: [IMS::LTI::Models::RestServiceProfile.new]
     )
@@ -42,14 +42,14 @@ class ToolProxyController < ApplicationController
   def tool_profile
     message = IMS::LTI::Models::MessageHandler.new(
       message_type: 'basic-lti-launch-request',
-      path: messages_blti_url,
+      path: recordrtc_launch_url,
       parameter: variable_parameters + fixed_parameters
     )
 
     resource_handler = IMS::LTI::Models::ResourceHandler.from_json(
       {
         resource_type: {code: 'placements'},
-        resource_name: {default_value: 'lti_example_tool', key: ''},
+        resource_name: {default_value: 'recordrtc', key: ''},
         message: message.as_json
       }
     )

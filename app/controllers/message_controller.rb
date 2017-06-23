@@ -16,7 +16,7 @@ class MessageController < ApplicationController
                                                   'Unknown Error'
                                               end
     @message = IMS::LTI::Models::Messages::Message.generate(request.request_parameters)
-    @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
+    @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: ENV['LTI_SECRET'], callback: 'about:blank')
 
     render :launch_request, status: 200
   end
@@ -32,9 +32,9 @@ class MessageController < ApplicationController
   end
 
   def signed_content_item_request
-    key = 'key' # this should ideally be sent up via api call
+    key = ENV['LTI_KEY'] # this should ideally be sent up via api call
     launch_url = params.delete('return_url')
-    tool = RailsLti2Provider::Tool.where(uuid: 'key').last
+    tool = RailsLti2Provider::Tool.where(uuid: ENV['LTI_KEY']).last
     message = IMS::LTI::Models::Messages::Message.generate(request.request_parameters.merge(oauth_consumer_key: key))
     message.launch_url = launch_url
     @launch_params = { launch_url: message.launch_url, signed_params: message.signed_post_params(tool.shared_secret) }
@@ -50,7 +50,7 @@ class MessageController < ApplicationController
     @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"
     #TODO: should we create the lti_launch with all of the oauth params as well?
     @message = (@lti_launch && @lti_launch.message) || IMS::LTI::Models::Messages::Message.generate(request.request_parameters)
-    @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
+    @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: ENV['LTI_SECRET'], callback: 'about:blank')
 
     if @message.lti_version == 'LTI-2p0'
       session[:user_id] = @message.custom_person_sourcedid || @message.user_id
