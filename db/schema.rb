@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170620143956) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -24,16 +21,16 @@ ActiveRecord::Schema.define(version: 20170620143956) do
   create_table "collaboration_callbacks", force: :cascade do |t|
     t.string   "request_method"
     t.string   "host"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "rails_lti2_provider_lti_launches", force: :cascade do |t|
-    t.bigint   "tool_id"
+    t.integer  "tool_id",    limit: 8
     t.string   "nonce"
     t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "rails_lti2_provider_registrations", force: :cascade do |t|
@@ -41,19 +38,19 @@ ActiveRecord::Schema.define(version: 20170620143956) do
     t.text     "registration_request_params"
     t.text     "tool_proxy_json"
     t.string   "workflow_state"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.bigint   "tool_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "tool_id",                     limit: 8
     t.text     "correlation_id"
-    t.index ["correlation_id"], name: "index_rails_lti2_provider_registrations_on_correlation_id", unique: true, using: :btree
+    t.index ["correlation_id"], name: "index_rails_lti2_provider_registrations_on_correlation_id", unique: true
   end
 
   create_table "rails_lti2_provider_tools", force: :cascade do |t|
     t.string   "uuid"
     t.text     "shared_secret"
     t.text     "tool_settings"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "lti_version"
   end
 
@@ -64,8 +61,7 @@ ActiveRecord::Schema.define(version: 20170620143956) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "account_id"
-    t.index ["account_id"], name: "index_recordings_on_account_id", using: :btree
+    t.index ["account_id"], name: "index_recordings_on_account_id"
   end
 
-  add_foreign_key "recordings", "accounts"
 end

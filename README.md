@@ -1,15 +1,23 @@
 # README
 ---
 
-This is the open-source version of the app!
+### REQUIRES
 
+* PostgreSQL
+* Ruby 2.4.0
 
+And that's it!
 
-Use `bundle install` to install all required dependencies.  
-Run `cp sample.env .env` and change the database values in the file to suit your environment.  
-Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`.  
-Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.  
-Start app with `rails s`!
+### SETUP
+
+* Use `bundle install` to install all required dependencies.
+* Run `cp sample.env .env` and change the database values in the file to suit your environment.
+* Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`.
+* Place your LTI key and secret in `.env`.
+* Modify the `origins '*'` line in `config/initializers/cors.rb` by replacing the asterisk with the domain name.
+* Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.
+* Start app with `rails s`.
+* To register the app the LTI 1.0 way, use the launch URL `example.com/launch`, where `example.com` is the domain name. To register the LTI 2.0 way, use registration URL `example.com/register`.
 
 ### KNOWN BUGS
 
@@ -22,8 +30,6 @@ Start app with `rails s`!
 * Change `config/initializers/cors.rb` to not allow every single host
 * Authenticate CSRF token before accessing API
 * Consider using OAuth2 gem instead of simple_oauth; check to see what is required to move over
-* OPTIONAL: Add video thumbnails to home page
-* OPTIONAL: Integrate Shrine's URL storage for cache
 * TBD: Add support for audio recording (if determined to be needed)
 
 ### NOTES

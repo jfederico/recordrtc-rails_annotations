@@ -9,10 +9,6 @@ ruby '2.4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-## Use PostgreSQL as the database for Active Record
-gem 'pg', '~> 0.18'
 # Use dotenv to keep database username and password separate and user-changeable
 gem 'dotenv-rails'
 
@@ -63,11 +59,15 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Use Puma for serving in development
   gem 'puma', '~> 3.0'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.3.10'
 end
 
 group :production do
   # Use Passenger for serving in production
   gem 'passenger', '~> 5.0'
+  # Use PostgreSQL as the database for Active Record
+  gem 'pg', '~> 0.18'
 end
 
 # Use jQuery DataTables for table functionality such as searching
