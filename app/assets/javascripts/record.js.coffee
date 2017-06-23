@@ -362,13 +362,7 @@ $(document).on 'turbolinks:load', ->
       modalBtn = $('button#show-modal')
 
       # To make sure connection is secure
-      #var isSecureOrigin = location.protocol === 'https:' ||
-      #    location.host === 'localhost';
-      #if (!isSecureOrigin) {
-      #    alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
-      #        '\n\nChanging protocol to HTTPS');
-      #    location.protocol = 'HTTPS';
-      #}
+      isSecureOrigin = location.protocol is 'https' or _.includes location.host, 'localhost'
 
       # Record both audio and video
       constraints =
@@ -402,6 +396,17 @@ $(document).on 'turbolinks:load', ->
 
       # Start form off hidden
       uploadForm.css 'display', 'none'
+
+      # Show error alert if not launched over HTTPS
+      if !isSecureOrigin
+        swal(
+          title: 'Content insecure'
+          text: 'This tool must be run from a secure origin: HTTPS or localhost.'
+          type: 'error'
+          confirmButtonText: 'Take me back'
+        ).then ->
+          window.close()
+          return
 
       # Commence capturing of webcam stream
       navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch(errorCallback)
