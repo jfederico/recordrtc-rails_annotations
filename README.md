@@ -13,7 +13,7 @@ And that's it!
 * Use `bundle install` to install all required dependencies.
 * Run `cp sample.env .env` and change the database values in the file to suit your environment.
 * Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`.
-* Place your LTI key and secret in `.env`.
+* Place your own LTI key and secret in `.env`. You will most likely obtain this from the person who set up the app for your uses.
 * Modify the `origins '*'` line in `config/initializers/cors.rb` by replacing the asterisk with the domain name.
 * Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.
 * Start app with `rails s`.
