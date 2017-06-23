@@ -1,18 +1,18 @@
 code: default
 name:
   default_value: RecordRTC
-  key: default.name
+  key: recordrtc
 
 description:
-  default_value: RecordRTC
-  key: default.description
+  default_value: An LTI tool for recording annotations
+  key: recordrtc.description
 
 messages:
   - type: basic-lti-launch-request
     route:
-      path: "/default"
+      path: "/launch"
       controller: "message"
-      action: "recordrtc_launch_request"
+      action: "launch_request"
 ### List of parameters ###
 #    parameters:
 #      - name: #the name of the parameter
