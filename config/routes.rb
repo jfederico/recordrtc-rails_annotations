@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'launch', to: 'guide#xml_config', as: :xml_config
   post 'launch', to: 'message#launch_request', as: 'recordrtc_launch'
   post 'messages/content-item', to: 'message#content_item_selection', as: 'content_item_request_launch'
-  post 'messages/content-item', to: 'message#basic_lti_launch_request', as: 'content_item_launch'
+  post 'messages/content-item', to: 'message#launch_request', as: 'content_item_launch'
   post 'messages/signed_content_item_request', to: 'message#signed_content_item_request'
   post 'messages/youtube', to: 'message#youtube', as: 'youtube'
 
