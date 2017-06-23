@@ -12,8 +12,11 @@ And that's it!
 
 * Use `bundle install` to install all required dependencies.
 * Run `cp sample.env .env` and change the database values in the file to suit your environment.
-* Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`.
-* Place your own LTI key and secret in `.env`. You will most likely obtain this from the person who set up the app for your uses.
+  * RECORDRTC_RAILS_ANNOTATIONS_HOST is the hostname of where PostgreSQL is running.
+  * RECORDRTC_RAILS_ANNOTATIONS_USER is the username of the database owner in PostgreSQL.
+  * RECORDRTC_RAILS_ANNOTATIONS_PASS is the password of the same database owner.
+* Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`, for SECRET_KEY_BASE.
+* Place your own LTI key and secret in `.env`, for LTI_KEY and LTI_SECRET respectively. You will most likely obtain this from the person who set up the app for your uses.
 * Modify the `origins '*'` line in `config/initializers/cors.rb` by replacing the asterisk with the domain name.
 * Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.
 * Start app with `rails s`.
