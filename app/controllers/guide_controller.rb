@@ -2,7 +2,7 @@ class GuideController < ApplicationController
   require 'ims/lti'
 
   def xml_config
-    tc = IMS::LTI::Services::ToolConfig.new(:title => "RecordRTC", :launch_url => recordrtc_launch_url)
+    tc = IMS::LTI::Services::ToolConfig.new(:title => "RecordRTC", :launch_url => recordrtc_launch_url, :icon => ActionController::Base.helpers.asset_url('lti-icon.png'))
     tc.description = "This is an LTI app for recording annotations."
 
     if query_params = request.query_parameters
@@ -11,7 +11,7 @@ class GuideController < ApplicationController
       tc.set_ext_param(platform, :selection_height, query_params[:selection_height])
       tc.set_ext_param(platform, :privacy_level, 'public')
       tc.set_ext_param(platform, :text, 'Extension text')
-      tc.set_ext_param(platform, :icon_url, view_context.asset_url('selector.png'))
+      tc.set_ext_param(platform, :icon_url, ActionController::Base.helpers.asset_url('lti-icon.png'))
       tc.set_ext_param(platform, :domain, request.host_with_port)
 
       query_params[:custom_params].each { |_, v| tc.set_custom_param(v[:name].to_sym, v[:value]) } if query_params[:custom_params]
@@ -33,7 +33,7 @@ class GuideController < ApplicationController
                           {url: recordrtc_launch_url}
                         end
 
-    navigation_params[:icon_url] = view_context.asset_url('selector.png') + "?#{placement_key}"
+    navigation_params[:icon_url] = ActionController::Base.helpers.asset_url('lti-icon.png') + "?#{placement_key}"
     navigation_params[:canvas_icon_class] = "icon-lti"
     navigation_params[:text] = "#{placement_key} Text"
 
