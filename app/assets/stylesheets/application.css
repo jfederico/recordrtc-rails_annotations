@@ -12,10 +12,9 @@
  *= require datatables
  *= require sweetalert2
  *= require ladda
- *= require guide
  *= require launch
  *= require message
- *= require recordrtc
+ *= require record
  *= require registration
  *= require_self
  */

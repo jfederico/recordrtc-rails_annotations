@@ -1,16 +1,6 @@
 class GuideController < ApplicationController
   require 'ims/lti'
 
-  def home
-    @disable_nav = true
-  end
-
-  def xml_builder
-    @disable_nav = true
-
-    @placements = CanvasExtensions::PLACEMENTS
-  end
-
   def xml_config
     tc = IMS::LTI::Services::ToolConfig.new(:title => "RecordRTC", :launch_url => recordrtc_launch_url)
     tc.description = "This is an LTI app for recording annotations."

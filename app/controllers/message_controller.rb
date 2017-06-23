@@ -17,17 +17,14 @@ class MessageController < ApplicationController
                                               end
     @message = IMS::LTI::Models::Messages::Message.generate(request.request_parameters)
     @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
-    render :basic_lti_launch_request, status: 200
+
+    render :launch_request, status: 200
   end
 
-  def basic_lti_launch_request
+  def launch_request
     @disable_nav = true
 
     process_message
-  end
-
-  def recordrtc_launch_request
-    process_message_recordrtc
   end
 
   def content_item_selection
@@ -54,22 +51,15 @@ class MessageController < ApplicationController
     #TODO: should we create the lti_launch with all of the oauth params as well?
     @message = (@lti_launch && @lti_launch.message) || IMS::LTI::Models::Messages::Message.generate(request.request_parameters)
     @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
-  end
-
-  def process_message_recordrtc
-    @secret = "&#{RailsLti2Provider::Tool.find(@lti_launch.tool_id).shared_secret}"
-    #TODO: should we create the lti_launch with all of the oauth params as well?
-    @message = (@lti_launch && @lti_launch.message) || IMS::LTI::Models::Messages::Message.generate(request.request_parameters)
-    @header = SimpleOAuth::Header.new(:post, request.url, @message.post_params, consumer_key: @message.oauth_consumer_key, consumer_secret: 'secret', callback: 'about:blank')
 
     if @message.lti_version == 'LTI-2p0'
       session[:user_id] = @message.custom_person_sourcedid || @message.user_id
-      session[:full_name] = @message.custom_person_name_full || 'Student'
+      session[:full_name] = @message.custom_person_name_full || 'Student View'
     elsif @message.lti_version == 'LTI-1p0'
       session[:user_id] = @message.lis_person_sourcedid || @message.user_id
-      session[:full_name] = @message.lis_person_name_full || 'Student'
+      session[:full_name] = @message.lis_person_name_full || 'Student View'
     end
 
-    redirect_to recordrtc_index_path
+    redirect_to record_index_path
   end
 end

@@ -2,16 +2,10 @@ Rails.application.routes.draw do
   post 'callback', to: 'collaboration_callbacks#confirm_url'
   delete 'callback', to: 'collaboration_callbacks#confirm_url'
 
-  root to: 'guide#home'
-
-  get 'xml_config', to: 'guide#xml_config', as: :xml_config
-  get 'xml_builder', to: 'guide#xml_builder', as: :xml_builder
-
   resources :tool_proxy, only: [:create]
 
-  post 'messages/blti', to: 'message#basic_lti_launch_request', as: 'blti_launch'
-  get 'recordrtc', to: 'recordrtc#index', as: 'recordrtc_index'
-  post 'recordrtc', to: 'message#recordrtc_launch_request', as: 'recordrtc_launch'
+  get 'launch', to: 'guide#xml_config', as: :xml_config
+  post 'launch', to: 'message#launch_request', as: 'recordrtc_launch'
   post 'messages/content-item', to: 'message#content_item_selection', as: 'content_item_request_launch'
   post 'messages/content-item', to: 'message#basic_lti_launch_request', as: 'content_item_launch'
   post 'messages/signed_content_item_request', to: 'message#signed_content_item_request'
@@ -28,7 +22,7 @@ Rails.application.routes.draw do
     resources :recordings, except: [:new, :edit]
   end
 
-  resources :recordrtc, only: [:index, :show, :new, :edit]
+  resources :record, only: [:index, :show, :new, :edit]
 
-  get 'refresh_recordings', to: 'recordrtc#refresh_recordings'
+  get 'refresh_recordings', to: 'record#refresh_recordings'
 end

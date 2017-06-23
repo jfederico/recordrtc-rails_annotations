@@ -3,10 +3,10 @@
 # Only start executing once DOM has loaded
 $(document).on 'turbolinks:load', ->
   #/////////////////////////////////////////////////////////////////////////////
-  # JavaScript for CONTROLLER: recordrtc, global
+  # JavaScript for CONTROLLER: record, global
   #/////////////////////////////////////////////////////////////////////////////
 
-  if $('body').hasClass 'recordrtc'
+  if $('body').hasClass 'record'
     #//////////////////
     # Helper functions
     #//////////////////
@@ -69,7 +69,7 @@ $(document).on 'turbolinks:load', ->
 
 
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: recordrtc, ACTION: index
+    # JavaScript for CONTROLLER: record, ACTION: index
     #///////////////////////////////////////////////////////////////////////////
 
     if $('body').hasClass 'index'
@@ -133,7 +133,7 @@ $(document).on 'turbolinks:load', ->
 
 
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: recordrtc, ACTION: new
+    # JavaScript for CONTROLLER: record, ACTION: new
     #///////////////////////////////////////////////////////////////////////////
 
     if $('body').hasClass 'new'
@@ -409,7 +409,7 @@ $(document).on 'turbolinks:load', ->
 
 
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: recordrtc, ACTION: edit
+    # JavaScript for CONTROLLER: record, ACTION: edit
     #///////////////////////////////////////////////////////////////////////////
 
     if $('body').hasClass 'edit'
@@ -446,7 +446,7 @@ $(document).on 'turbolinks:load', ->
 
 
     #///////////////////////////////////////////////////////////////////////////
-    # JavaScript for CONTROLLER: recordrtc, ACTION: show
+    # JavaScript for CONTROLLER: record, ACTION: show
     #///////////////////////////////////////////////////////////////////////////
 
     if $('body').hasClass 'show'

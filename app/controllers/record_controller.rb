@@ -1,24 +1,24 @@
-class RecordRTCController < ApplicationController
+class RecordController < ApplicationController
   before_action :set_account
   before_action :set_recording, except: [:index, :new, :refresh_recordings]
 
-  # GET /recordrtc
+  # GET /record
   def index
     @full_name = session[:full_name]
 
     @recordings = @account.recordings
   end
 
-  # GET /recordrtc/:id
+  # GET /record/:id
   def show
   end
 
-  # GET /recordrtc/new
+  # GET /record/new
   def new
     @recording = @account.recordings.new
   end
 
-  # GET /recordrtc/:id/edit
+  # GET /record/:id/edit
   def edit
   end
 

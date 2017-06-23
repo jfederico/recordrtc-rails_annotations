@@ -1,5 +1,5 @@
 <% if @recordings.empty? %>
-  There's nothing here! <%= link_to 'Click here', new_recordrtc_path %> to add a new recording.
+  There's nothing here! <%= link_to 'Click here', new_record_path %> to add a new recording.
 <% end %>
 
 <% unless @recordings.empty? %>
@@ -15,11 +15,11 @@
     <tbody>
       <% @recordings.each do |rec| %>
         <tr>
-          <td><%= link_to rec.title, recordrtc_path(rec) %></td>
+          <td><%= link_to rec.title, record_path(rec) %></td>
           <td><%= rec.created_at.strftime("%A, %d %b %Y @ %H:%M") %></td>
           <td class="text-right">
             <div class="btn-group">
-              <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_recordrtc_path(rec), class: 'btn btn-default btn-xs', method: :get %>
+              <%= link_to '<i class="fa fa-pencil-square-o"></i> Edit'.html_safe, edit_record_path(rec), class: 'btn btn-default btn-xs', method: :get %>
               <%= link_to '<i class="fa fa-trash-o"></i> Delete'.html_safe, api_recording_path(rec), class: 'delete-btn btn btn-outline btn-danger btn-xs', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
             </div>
           </td>
