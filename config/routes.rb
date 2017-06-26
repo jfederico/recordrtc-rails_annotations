@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :tool_proxy, only: [:create]
 
-  get 'launch', to: 'guide#xml_config', as: :xml_config
+  get 'launch', to: 'message#xml_config', as: :xml_config
   post 'launch', to: 'message#launch_request', as: 'recordrtc_launch'
   post 'messages/content-item', to: 'message#content_item_selection', as: 'content_item_request_launch'
   post 'messages/content-item', to: 'message#launch_request', as: 'content_item_launch'
