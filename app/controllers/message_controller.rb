@@ -44,30 +44,18 @@ class MessageController < ApplicationController
     tc.cartridge_bundle = 'RECORDRTC_LTI1&2_Bundle'
     tc.cartridge_icon = 'RECORDRTC_LTI1&2_Icon'
 
-    #if query_params = request.query_parameters
-    #  platform = CanvasExtensions::PLATFORM
-    #  tc.set_ext_param(platform, :selection_width, query_params[:selection_width])
-    #  tc.set_ext_param(platform, :selection_height, query_params[:selection_height])
-    #  tc.set_ext_param(platform, :privacy_level, 'public')
-    #  tc.set_ext_param(platform, :text, 'Extension text')
-    #  tc.set_ext_param(platform, :icon_url, icon_url)
-    #  tc.set_ext_param(platform, :domain, request.host_with_port)
+    if query_params = request.query_parameters
+      platform = CanvasExtensions::PLATFORM
+      tc.set_ext_param(platform, :selection_width, query_params[:selection_width])
+      tc.set_ext_param(platform, :selection_height, query_params[:selection_height])
+      tc.set_ext_param(platform, :privacy_level, 'public')
+      tc.set_ext_param(platform, :text, 'Extension text')
+      tc.set_ext_param(platform, :icon_url, icon_url)
+      tc.set_ext_param(platform, :domain, request.host_with_port)
+      create_placement(tc, :course_navigation)
 
-    #  query_params[:custom_params].each { |_, v| tc.set_custom_param(v[:name].to_sym, v[:value]) } if query_params[:custom_params]
-    #  query_params[:placements].each { |k, _| create_placement(tc, k.to_sym) } if query_params[:placements]
-    #end
-
-    # set user selected placements
-    if params[:placements]
-      params[:placements].each_pair do |k, v|
-        tc.set_ext_param(LtiExtensions::LMS[params[:platform].to_sym][:platform], k.to_s, {url: recordrtc_launch_url, text: v})
-      end
-    end
-    # set custom parameters if any
-    if params[:custom]
-      params[:custom].each_pair do |k, v|
-        tc.set_custom_param(k.to_s, v)
-      end
+      query_params[:custom_params].each { |_, v| tc.set_custom_param(v[:name].to_sym, v[:value]) } if query_params[:custom_params]
+      query_params[:placements].each { |k, _| create_placement(tc, k.to_sym) } if query_params[:placements]
     end
 
     render xml: tc.to_xml(:indent => 2)
@@ -108,10 +96,7 @@ class MessageController < ApplicationController
                         else
                           {url: recordrtc_launch_url}
                         end
-
-    navigation_params[:icon_url] = icon_url + "?#{placement_key}"
-    navigation_params[:canvas_icon_class] = "icon-lti"
-    navigation_params[:text] = "#{placement_key} Text"
+    navigation_params[:text] = 'RecordRTC'
 
     tc.set_ext_param(CanvasExtensions::PLATFORM, placement_key, navigation_params)
   end
