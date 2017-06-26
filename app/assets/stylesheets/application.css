@@ -18,6 +18,7 @@
  *= require_self
  */
 
-#navbar {
+/* Override SB Admin 2 default styling */
+.navbar {
   margin-bottom: 0;
 }
