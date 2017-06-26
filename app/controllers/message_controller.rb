@@ -96,7 +96,9 @@ class MessageController < ApplicationController
                         else
                           {url: recordrtc_launch_url}
                         end
+
     navigation_params[:text] = 'RecordRTC'
+    navigation_params[:windowTarget] = '_blank'
 
     tc.set_ext_param(CanvasExtensions::PLATFORM, placement_key, navigation_params)
   end
