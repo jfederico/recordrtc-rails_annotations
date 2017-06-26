@@ -35,6 +35,7 @@ And that's it!
 
 ### NOTES
 
+* For now, it must be set in the Moodle external tool settings that this app should open in a new tab due to problems with the iFrame
 * As of yet, no known way to attach blob to file input in form, so a mock-form sent as XHR FormData is necessary in lieu of form_for
 * Cannot separate concerns for React files
 * DataTables is causing column-resizing troubles. For now, the too-large "Actions" column is not such a big deal
