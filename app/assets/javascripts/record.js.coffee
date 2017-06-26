@@ -67,6 +67,18 @@ $(document).on 'turbolinks:load', ->
       cancelButtonText: 'Cancel'
 
 
+    #//////////////////
+    # Main logic
+    #//////////////////
+
+    # Stop retrieving webcam/microphone streams from recording page, it they still exist
+    if window.stream
+      $.each window.stream.getTracks(), (id, track) ->
+        console.log 'Stopped MediaStreamTrack', id + ':', track
+        track.stop()
+        return
+
+
 
     #///////////////////////////////////////////////////////////////////////////
     # JavaScript for CONTROLLER: record, ACTION: index
@@ -230,10 +242,11 @@ $(document).on 'turbolinks:load', ->
           return
         , 1000
 
+        # Stop recording webcam/microphone stream
         mediaRecorder.stop()
 
-        `blob = new Blob(recordedChunks, { type: 'video/webm' })`
-        # Set video player to play final recording, in true video player style
+        `blob = new Blob(recordedChunks, {type: 'video/webm'})`
+        # Set video player to play final recording
         videoPlayer.prop 'src', window.URL.createObjectURL blob
         videoPlayer.prop 'controls', true
         videoPlayer.prop 'muted', false

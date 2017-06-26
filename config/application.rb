@@ -26,6 +26,6 @@ module RecordRTCRailsAnnotations
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W(#{config.root}/lib)
-    config.action_dispatch.default_headers.delete "X-Frame-Options"
+    config.action_dispatch.default_headers.delete 'X-Frame-Options'
   end
 end
