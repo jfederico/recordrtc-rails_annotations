@@ -1,7 +1,7 @@
-code: default
+code: recordrtc
 name:
   default_value: RecordRTC
-  key: recordrtc
+  key: recordrtc.name
 
 description:
   default_value: An LTI tool for recording annotations
