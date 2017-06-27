@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/jacobprudhomme/rails_lti2_provider.git
-  revision: 9fd60e0eb895880ea21e4e5ec50e6087a09349e1
-  ref: 9fd60e0eb895880ea21e4e5ec50e6087a09349e1
+  revision: c58cd008e12ad22db183a59d89898f2ebccd8cdf
+  ref: c58cd008e12ad22db183a59d89898f2ebccd8cdf
   specs:
     rails_lti2_provider (0.0.1)
       ims-lti

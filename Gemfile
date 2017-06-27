@@ -83,7 +83,7 @@ gem 'ladda-rails'
 gem 'simple_oauth', '0.2.0'
 # Use IMS-LTI and sample Rails LTI app to add LTI features
 gem 'ims-lti', '2.1.2'
-gem 'rails_lti2_provider', git: 'https://github.com/jacobprudhomme/rails_lti2_provider.git', ref: '9fd60e0eb895880ea21e4e5ec50e6087a09349e1'
+gem 'rails_lti2_provider', git: 'https://github.com/jacobprudhomme/rails_lti2_provider.git', ref: 'c58cd008e12ad22db183a59d89898f2ebccd8cdf'
 #gem 'rails_lti2_provider', git: 'https://github.com/blindsidenetworks/rails_lti2_provider.git', ref: 'd350174fafc323670ec8bb5ca652d9753841f5e7'
 
 # Use Shrine for file uploads
