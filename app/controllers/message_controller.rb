@@ -44,8 +44,10 @@ class MessageController < ApplicationController
     tc.cartridge_bundle = 'RECORDRTC_LTI1&2_Bundle'
     tc.cartridge_icon = 'RECORDRTC_LTI1&2_Icon'
 
-    if query_params = request.query_parameters
-      platform = CanvasExtensions::PLATFORM
+    if request.query_parameters
+      query_params = request.query_parameters
+
+      platform = 'canvas.instructure.com'
       tc.set_ext_param(platform, :selection_width, query_params[:selection_width])
       tc.set_ext_param(platform, :selection_height, query_params[:selection_height])
       tc.set_ext_param(platform, :privacy_level, 'public')
@@ -98,7 +100,7 @@ class MessageController < ApplicationController
                         end
     navigation_params[:text] = 'RecordRTC'
 
-    tc.set_ext_param(CanvasExtensions::PLATFORM, placement_key, navigation_params)
+    tc.set_ext_param('canvas.instructure.com', placement_key, navigation_params)
   end
 
   def process_message
