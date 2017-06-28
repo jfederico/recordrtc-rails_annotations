@@ -18,6 +18,7 @@ And that's it!
 * Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`, for SECRET_KEY_BASE.
 * Place your own LTI key and secret in `.env`, for LTI_KEY and LTI_SECRET respectively. You will most likely obtain this from the person who set up the app for your uses.
 * Make sure your `RAILS_ENV` is set to `production` in `.env`.
+* Set `RAILS_RELATIVE_URL_ROOT` to the URL on which your app will be served, relative to the domain name, such as `/xyz` or `/app`. The default is blank, meaning your app will be hosted at the root.
 * Modify the `origins '*'` line in `config/initializers/cors.rb` by replacing the asterisk with the domain name.
 * Run `rails assets:precompile RAILS_RELATIVE_URL_ROOT=/xyz`, where `xyz` is the root URL of your Rails app relative to your domain name.
 * Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.
