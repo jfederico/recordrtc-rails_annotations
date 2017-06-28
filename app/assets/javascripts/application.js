@@ -30,3 +30,4 @@
 //= require message
 //= require record
 //= require registration
+//= require_self
