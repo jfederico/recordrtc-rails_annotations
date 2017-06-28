@@ -375,7 +375,7 @@ $(document).on 'turbolinks:load', ->
       modalBtn = $('button#show-modal')
 
       # To make sure connection is secure
-      isSecureOrigin = location.protocol is 'https' or _.includes location.host, 'localhost'
+      isSecureOrigin = window.location.protocol is 'https:' or _.includes window.location.host, 'localhost'
 
       # Record both audio and video
       constraints =
