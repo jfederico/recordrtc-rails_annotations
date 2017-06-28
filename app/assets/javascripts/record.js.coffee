@@ -269,9 +269,7 @@ $(document).on 'turbolinks:load', ->
         formData.append 'recording[account_id]', accountInput.val()
 
         # Upload the form data
-        relative_base_url = <%= ENV['RAILS_RELATIVE_URL_ROOT'] %>
-        proper_relative_base_url = if relative_base_url is '/' then '' else relative_base_url
-        makeXMLHttpRequest proper_relative_base_url + '/api/recordings', 'POST', formData
+        makeXMLHttpRequest Routes.api_recordings_path(), 'POST', formData
         return
 
       makeXMLHttpRequest = (url, method, data) ->

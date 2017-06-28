@@ -31,6 +31,8 @@ gem 'rack-cors', '~> 0.4.0'
 gem 'will_paginate', '~> 3.1.0'
 # Use Gaffe to easily add custom error pages to the app
 gem 'gaffe', '~> 1.2.0'
+# Use JsRoutes to avoid issues with different relative base URLs when accessing the API endpoints
+gem 'js-routes', '~> 1.3.0'
 
 # Use Bootstrap for SASS
 gem 'bootstrap-sass', '3.3.0.0'
