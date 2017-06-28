@@ -17,9 +17,9 @@ And that's it!
   * RECORDRTC_RAILS_ANNOTATIONS_PASS is the password of the same database owner.
 * Run `rails secret` and place your generated secret keys (a different one for each Rails environment) in `.env`, for SECRET_KEY_BASE.
 * Place your own LTI key and secret in `.env`, for LTI_KEY and LTI_SECRET respectively. You will most likely obtain this from the person who set up the app for your uses.
+* Make sure your `RAILS_ENV` is set to `production` in `.env`.
 * Modify the `origins '*'` line in `config/initializers/cors.rb` by replacing the asterisk with the domain name.
-* Make sure your `RAILS_ENV` is set to `production`.
-* Run `rails assets:precompile`.
+* Run `rails assets:precompile RAILS_RELATIVE_URL_ROOT=/xyz`, where `xyz` is the root URL of your Rails app relative to your domain name.
 * Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.
 * Start app with `rails s`.
 * To register the app the LTI 1.0 way, use the launch URL `example.com/launch`, where `example.com` is the domain name. To register the LTI 2.0 way, use registration URL `example.com/register`.
