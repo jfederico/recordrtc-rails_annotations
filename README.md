@@ -22,7 +22,7 @@ And that's it!
 * Run `rails assets:precompile RAILS_RELATIVE_URL_ROOT=/xyz`, where `xyz` is the root URL of your Rails app relative to your domain name.
 * Run `rails railties:install:migrations`, `rails db:migrate` and `rails db:seed`.
 * Start app with `rails s`.
-* To register the app the LTI 1.0 way, use the launch URL `example.com/launch`, where `example.com` is the domain name. To register the LTI 2.0 way, use registration URL `example.com/register`.
+* To register the app the LTI 1.0 way, use the launch URL `https://example.com/xyz/launch`, where `example.com` is the domain name and `xyz` is the relative URL from which the app is served, if there is one. To register the LTI 2.0 way, use registration URL `https://example.com/register`. NOTICE: this app requires a secure connection over SSL to be able to use WebRTC. Your setup must be equipped for this.
 
 ### KNOWN BUGS
 
